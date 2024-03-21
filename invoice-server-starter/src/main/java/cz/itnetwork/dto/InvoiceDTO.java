@@ -24,10 +24,10 @@ public class InvoiceDTO {
 
     private PersonDTO buyer;
 
-    @JsonFormat(locale = "yyyy-mm-dd")
+    @JsonFormat(pattern = "yyyy-mm-dd")
     private Date issued;
 
-    @JsonFormat(locale = "yyyy-mm-dd")
+    @JsonFormat(pattern = "yyyy-mm-dd")
     private Date dueDate;
 
     private String product;

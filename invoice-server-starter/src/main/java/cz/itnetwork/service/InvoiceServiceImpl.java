@@ -1,11 +1,14 @@
 package cz.itnetwork.service;
 
 import cz.itnetwork.dto.InvoiceDTO;
+import cz.itnetwork.dto.PersonDTO;
 import cz.itnetwork.dto.mapper.InvoiceMapper;
 import cz.itnetwork.dto.mapper.PersonMapper;
 import cz.itnetwork.entity.InvoiceEntity;
+import cz.itnetwork.entity.PersonEntity;
 import cz.itnetwork.entity.repository.InvoiceRepository;
 import cz.itnetwork.entity.repository.PersonRepository;
+import org.mapstruct.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
@@ -28,23 +31,31 @@ public class InvoiceServiceImpl implements InvoiceService {
     @Autowired
     private PersonRepository personRepository;
 
+
     @Override
     public InvoiceDTO addInvoice(InvoiceDTO invoiceDTO) {
-        InvoiceEntity newInvoice = invoiceMapper.toEntity(invoiceDTO);
+        InvoiceEntity invoice = invoiceMapper.toEntity(invoiceDTO);
+        PersonEntity seller = fetchPersonById(invoiceDTO.getSeller().getId());
+        PersonEntity buyer = fetchPersonById(invoiceDTO.getBuyer().getId());
+        invoice.setSeller(seller);
+        invoice.setBuyer(buyer);
 
-        invoiceRepository.save(newInvoice);
+        invoiceRepository.save(invoice);
 
-        return invoiceMapper.toDTO(newInvoice);
+        return invoiceMapper.toDTO(invoice);
     }
+
+    @Mapping(target = "buyer", ignore = true)
+    @Mapping(target = "seller", ignore = true)
 
     @Override
     public InvoiceDTO editInvoice(InvoiceDTO invoiceDTO, long id) {
+        fetchInvoiceById(id);
         InvoiceEntity invoice = invoiceMapper.toEntity(invoiceDTO);
+        invoice.setId(id);
+        InvoiceEntity updatedInvoice = invoiceRepository.save(invoice);
 
-        InvoiceEntity newInvoice = invoice;
-        invoiceRepository.save(newInvoice);
-
-        return null;
+        return invoiceMapper.toDTO(updatedInvoice);
     }
 
     @Override
@@ -66,7 +77,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 
 
     @Override
-    public InvoiceDTO getDetail(InvoiceDTO invoiceDTO, long id) {
+    public InvoiceDTO getDetail(long id) {
         InvoiceEntity invoice = fetchInvoiceById(id);
 
         return invoiceMapper.toDTO(invoice);
@@ -75,6 +86,10 @@ public class InvoiceServiceImpl implements InvoiceService {
     private InvoiceEntity fetchInvoiceById(long id) {
         return invoiceRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Invoice with id " + id + " wasn't found in the database."));
+    }
+    private PersonEntity fetchPersonById(long id) {
+        return personRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Person with id " + id + " wasn't found in the database."));
     }
 
 

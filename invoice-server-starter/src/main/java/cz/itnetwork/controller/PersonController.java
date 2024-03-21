@@ -24,6 +24,7 @@ package cz.itnetwork.controller;
 import cz.itnetwork.dto.PersonDTO;
 import cz.itnetwork.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,8 +47,8 @@ public class PersonController {
     }
 
     @GetMapping("/persons/{id}")
-    public PersonDTO getDetail(@RequestBody PersonDTO personDTO, @PathVariable long id){
-        return personService.getDetail(personDTO, id);
+    public PersonDTO getDetail(@PathVariable long id){
+        return personService.getDetail(id);
     }
 
     @PutMapping("/persons/{id}")
@@ -56,6 +57,7 @@ public class PersonController {
     }
 
     @DeleteMapping("/persons/{personId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletePerson(@PathVariable Long personId) {
         personService.removePerson(personId);
     }

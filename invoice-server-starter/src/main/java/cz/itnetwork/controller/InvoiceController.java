@@ -1,6 +1,7 @@
 package cz.itnetwork.controller;
 
 import cz.itnetwork.dto.InvoiceDTO;
+import cz.itnetwork.dto.PersonDTO;
 import cz.itnetwork.service.InvoiceService;
 import cz.itnetwork.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +41,8 @@ public class InvoiceController {
     }
 
     @GetMapping("/invoices/{id}")
-    public InvoiceDTO getDetail(@RequestBody InvoiceDTO invoiceDTO, @PathVariable long id) {
-        return invoiceService.getDetail(invoiceDTO, id);
+    public InvoiceDTO getDetail(@PathVariable long id) {
+        return invoiceService.getDetail(id);
     }
 
     @PutMapping("/invoices/{id}")
