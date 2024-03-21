@@ -2,6 +2,8 @@ package cz.itnetwork.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import cz.itnetwork.entity.PersonEntity;
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +14,9 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class InvoiceDTO {
+
+    @JsonProperty("_id")
+    private long id;
 
     private int invoiceNumber;
 
@@ -33,8 +38,7 @@ public class InvoiceDTO {
 
     private String note;
 
-    @JsonProperty("_id")
-    private long id;
+
 
 
 }

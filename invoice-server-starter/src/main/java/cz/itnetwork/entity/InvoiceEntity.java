@@ -38,8 +38,8 @@ public class InvoiceEntity {
     private String note;
 
     @ManyToOne
-    private PersonDTO buyer;
+    private PersonEntity buyer;
 
     @ManyToOne
-    private PersonDTO seller;
+    private PersonEntity seller;
 }

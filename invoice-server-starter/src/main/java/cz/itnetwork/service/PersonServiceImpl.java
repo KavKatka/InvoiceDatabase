@@ -21,9 +21,13 @@
  */
 package cz.itnetwork.service;
 
+import cz.itnetwork.dto.InvoiceDTO;
 import cz.itnetwork.dto.PersonDTO;
+import cz.itnetwork.dto.mapper.InvoiceMapper;
 import cz.itnetwork.dto.mapper.PersonMapper;
+import cz.itnetwork.entity.InvoiceEntity;
 import cz.itnetwork.entity.PersonEntity;
+import cz.itnetwork.entity.repository.InvoiceRepository;
 import cz.itnetwork.entity.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,6 +45,12 @@ public class PersonServiceImpl implements PersonService {
     @Autowired
     private PersonRepository personRepository;
 
+    @Autowired
+    private InvoiceMapper invoiceMapper;
+
+    @Autowired
+    private InvoiceRepository invoiceRepository;
+
     public PersonDTO addPerson(PersonDTO personDTO) {
         PersonEntity entity = personMapper.toEntity(personDTO);
         entity = personRepository.save(entity);
@@ -56,7 +66,7 @@ public class PersonServiceImpl implements PersonService {
         person.setHidden(true);
         personRepository.save(person);
 
-        PersonEntity newPerson = person;
+        PersonEntity newPerson = personMapper.toEntity(personDTO);
         personRepository.save(newPerson);
 
         return personMapper.toDTO(newPerson);
@@ -69,6 +79,21 @@ public class PersonServiceImpl implements PersonService {
 
         return personMapper.toDTO(person);
     }
+
+    @Override
+    public List<InvoiceDTO> getSales(String identificationNumber) {
+
+        return invoiceMapper.toDTOs(invoiceRepository.findByBuyer_IdentificationNumber(identificationNumber));
+    }
+
+    @Override
+    public List<InvoiceDTO> getPurchases(String identificationNumber) {
+
+        return invoiceMapper.toDTOs(invoiceRepository.findBySeller_IdentificationNumber(identificationNumber));
+    }
+
+
+
 
     @Override
     public void removePerson(long personId) {

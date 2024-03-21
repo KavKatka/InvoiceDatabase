@@ -77,12 +77,10 @@ public class PersonEntity {
 
     private boolean hidden = false;
 
-    @OneToMany
-    @JoinColumn(name = "buyer")
-    private List<InvoiceDTO> purchases;
+    @OneToMany(mappedBy = "buyer")
+    private List<InvoiceEntity> purchases;
 
-    @ManyToOne
-    @JoinColumn(name = "seller")
-    private List<InvoiceDTO> sales;
+    @OneToMany(mappedBy = "seller")
+    private List<InvoiceEntity> sales;
 
 }

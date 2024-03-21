@@ -34,19 +34,24 @@ public class InvoiceServiceImpl implements InvoiceService {
 
         invoiceRepository.save(newInvoice);
 
-        return invoiceMapper.toDto(newInvoice);
+        return invoiceMapper.toDTO(newInvoice);
     }
 
-    //@Override
-    //public InvoiceDTO editInvoice() {
-     //   return null;
-    //}
+    @Override
+    public InvoiceDTO editInvoice(InvoiceDTO invoiceDTO, long id) {
+        InvoiceEntity invoice = invoiceMapper.toEntity(invoiceDTO);
+
+        InvoiceEntity newInvoice = invoice;
+        invoiceRepository.save(newInvoice);
+
+        return null;
+    }
 
     @Override
     public List<InvoiceDTO> getAll() {
         return invoiceRepository.findAll()
                 .stream()
-                .map(i -> invoiceMapper.toDto(i))
+                .map(i -> invoiceMapper.toDTO(i))
                 .collect(Collectors.toList());
     }
 
@@ -56,28 +61,15 @@ public class InvoiceServiceImpl implements InvoiceService {
 
         invoiceRepository.delete(invoice);
 
-        return invoiceMapper.toDto(invoice);
+        return invoiceMapper.toDTO(invoice);
     }
 
-    @Override
-    public InvoiceDTO getSales(String identificationNumber) {
-        InvoiceEntity sales = invoiceMapper.toEntity(invoiceRepository.findByBuyer_IdentificationNumber(identificationNumber));
-
-        return invoiceMapper.toDto(sales);
-    }
-
-    @Override
-    public InvoiceDTO getPurchases(String identificationNumber) {
-        InvoiceEntity purchases = invoiceMapper.toEntity(invoiceRepository.findBySeller_IdentificationNumber(identificationNumber));
-
-        return invoiceMapper.toDto(purchases);
-    }
 
     @Override
     public InvoiceDTO getDetail(InvoiceDTO invoiceDTO, long id) {
         InvoiceEntity invoice = fetchInvoiceById(id);
 
-        return invoiceMapper.toDto(invoice);
+        return invoiceMapper.toDTO(invoice);
     }
 
     private InvoiceEntity fetchInvoiceById(long id) {

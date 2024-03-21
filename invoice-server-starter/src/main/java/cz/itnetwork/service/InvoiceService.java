@@ -9,7 +9,7 @@ public interface InvoiceService {
 
     InvoiceDTO addInvoice(InvoiceDTO invoiceDTO);
 
-    //InvoiceDTO editInvoice();
+    InvoiceDTO editInvoice(InvoiceDTO invoiceDTO, long id);
 
     InvoiceDTO removeInvoice(long id);
 
@@ -17,9 +17,7 @@ public interface InvoiceService {
 
     List<InvoiceDTO> getAll();
 
-    InvoiceDTO getPurchases(String identificationNumber);
 
-    InvoiceDTO getSales(String identificationNumber);
 
 
 
