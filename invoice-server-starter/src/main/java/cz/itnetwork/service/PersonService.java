@@ -14,6 +14,12 @@ public interface PersonService {
      */
     PersonDTO addPerson(PersonDTO personDTO);
 
+    PersonDTO editPerson(PersonDTO personDTO, long id);
+
+    PersonDTO getDetail(PersonDTO personDTO, long id);
+
+
+
     /**
      * <p>Sets hidden flag to true for the person with the matching [id]</p>
      * <p>In case a person with the passed [id] isn't found, the method <b>silently fails</b></p>

@@ -49,6 +49,28 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
+    public PersonDTO editPerson(PersonDTO personDTO, long id) {
+
+        PersonEntity person = fetchPersonById(id);
+
+        person.setHidden(true);
+        personRepository.save(person);
+
+        PersonEntity newPerson = person;
+        personRepository.save(newPerson);
+
+        return personMapper.toDTO(newPerson);
+    }
+
+    @Override
+    public PersonDTO getDetail(PersonDTO personDTO, long id){
+
+        PersonEntity person = fetchPersonById(id);
+
+        return personMapper.toDTO(person);
+    }
+
+    @Override
     public void removePerson(long personId) {
         try {
             PersonEntity person = fetchPersonById(personId);

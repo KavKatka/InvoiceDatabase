@@ -25,6 +25,8 @@ import cz.itnetwork.constant.Countries;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,5 +78,12 @@ public class PersonEntity {
     private String note;
 
     private boolean hidden = false;
+    @OneToMany
+    @JoinColumn(name = "buyer")
+    private List<InvoiceEntity> purchases;
+
+    @ManyToOne
+    @JoinColumn(name = "seller")
+    private List<InvoiceEntity> sales;
 
 }
