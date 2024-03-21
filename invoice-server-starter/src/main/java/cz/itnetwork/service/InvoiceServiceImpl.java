@@ -37,10 +37,10 @@ public class InvoiceServiceImpl implements InvoiceService {
         return invoiceMapper.toDto(newInvoice);
     }
 
-    @Override
-    public InvoiceDTO editInvoice() {
-        return null;
-    }
+    //@Override
+    //public InvoiceDTO editInvoice() {
+     //   return null;
+    //}
 
     @Override
     public List<InvoiceDTO> getAll() {

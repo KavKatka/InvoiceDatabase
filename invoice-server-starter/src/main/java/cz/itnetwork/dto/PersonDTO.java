@@ -60,4 +60,7 @@ public class PersonDTO {
     private Countries country;
 
     private String note;
+
+
+
 }

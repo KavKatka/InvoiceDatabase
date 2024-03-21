@@ -63,7 +63,7 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public PersonDTO getDetail(PersonDTO personDTO, long id){
+    public PersonDTO getDetail(PersonDTO personDTO, long id) {
 
         PersonEntity person = fetchPersonById(id);
 
@@ -91,6 +91,7 @@ public class PersonServiceImpl implements PersonService {
     }
 
     // region: Private methods
+
     /**
      * <p>Attempts to fetch a person.</p>
      * <p>In case a person with the passed [id] doesn't exist a [{@link org.webjars.NotFoundException}] is thrown.</p>

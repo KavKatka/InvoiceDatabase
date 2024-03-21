@@ -22,13 +22,11 @@
 package cz.itnetwork.entity;
 
 import cz.itnetwork.constant.Countries;
+import cz.itnetwork.dto.InvoiceDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "person")
@@ -78,12 +76,13 @@ public class PersonEntity {
     private String note;
 
     private boolean hidden = false;
+
     @OneToMany
     @JoinColumn(name = "buyer")
-    private List<InvoiceEntity> purchases;
+    private List<InvoiceDTO> purchases;
 
     @ManyToOne
     @JoinColumn(name = "seller")
-    private List<InvoiceEntity> sales;
+    private List<InvoiceDTO> sales;
 
 }

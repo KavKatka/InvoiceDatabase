@@ -9,7 +9,7 @@ public interface InvoiceService {
 
     InvoiceDTO addInvoice(InvoiceDTO invoiceDTO);
 
-    InvoiceDTO editInvoice();
+    //InvoiceDTO editInvoice();
 
     InvoiceDTO removeInvoice(long id);
 
