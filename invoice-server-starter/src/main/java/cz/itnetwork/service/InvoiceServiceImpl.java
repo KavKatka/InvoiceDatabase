@@ -45,17 +45,18 @@ public class InvoiceServiceImpl implements InvoiceService {
         return invoiceMapper.toDTO(invoice);
     }
 
-    @Mapping(target = "buyer", ignore = true)
-    @Mapping(target = "seller", ignore = true)
+
 
     @Override
     public InvoiceDTO editInvoice(InvoiceDTO invoiceDTO, long id) {
-        fetchInvoiceById(id);
-        InvoiceEntity invoice = invoiceMapper.toEntity(invoiceDTO);
-        invoice.setId(id);
-        InvoiceEntity updatedInvoice = invoiceRepository.save(invoice);
 
-        return invoiceMapper.toDTO(updatedInvoice);
+        InvoiceEntity invoice = fetchInvoiceById(id);
+        invoiceMapper.updatedEntity(invoiceDTO,invoice);
+        invoice.setId(id);
+
+        invoiceRepository.save(invoice);
+
+        return invoiceMapper.toDTO(invoice);
     }
 
     @Override

@@ -2,6 +2,8 @@ package cz.itnetwork.service;
 
 import cz.itnetwork.dto.InvoiceDTO;
 import cz.itnetwork.dto.PersonDTO;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 import java.util.List;
 
@@ -9,6 +11,7 @@ import java.util.List;
 public interface InvoiceService {
 
     InvoiceDTO addInvoice(InvoiceDTO invoiceDTO);
+
 
     InvoiceDTO editInvoice(InvoiceDTO invoiceDTO, long id);
 
