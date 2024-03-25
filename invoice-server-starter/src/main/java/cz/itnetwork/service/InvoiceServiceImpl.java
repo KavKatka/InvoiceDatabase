@@ -1,14 +1,12 @@
 package cz.itnetwork.service;
 
 import cz.itnetwork.dto.InvoiceDTO;
-import cz.itnetwork.dto.PersonDTO;
 import cz.itnetwork.dto.mapper.InvoiceMapper;
 import cz.itnetwork.dto.mapper.PersonMapper;
 import cz.itnetwork.entity.InvoiceEntity;
 import cz.itnetwork.entity.PersonEntity;
 import cz.itnetwork.entity.repository.InvoiceRepository;
 import cz.itnetwork.entity.repository.PersonRepository;
-import org.mapstruct.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
@@ -46,17 +44,15 @@ public class InvoiceServiceImpl implements InvoiceService {
     }
 
 
-
     @Override
     public InvoiceDTO editInvoice(InvoiceDTO invoiceDTO, long id) {
-
-        InvoiceEntity invoice = fetchInvoiceById(id);
-        invoiceMapper.updatedEntity(invoiceDTO,invoice);
+        fetchInvoiceById(id);
+        InvoiceEntity invoice = invoiceMapper.toEntity(invoiceDTO);
+        invoiceMapper.updatedEntity(invoiceDTO, invoice);
         invoice.setId(id);
+        InvoiceEntity updatedInvoice = invoiceRepository.save(invoice);
 
-        invoiceRepository.save(invoice);
-
-        return invoiceMapper.toDTO(invoice);
+        return invoiceMapper.toDTO(updatedInvoice);
     }
 
     @Override
@@ -88,6 +84,7 @@ public class InvoiceServiceImpl implements InvoiceService {
         return invoiceRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Invoice with id " + id + " wasn't found in the database."));
     }
+
     private PersonEntity fetchPersonById(long id) {
         return personRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Person with id " + id + " wasn't found in the database."));
