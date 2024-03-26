@@ -22,6 +22,7 @@ const InvoiceTable = ({label, items, deleteInvoice}) => {
                     <tr key={index + 1}>
                         <td>{index + 1}</td>
                         <td>{item.name}</td>
+                        <td>{item.identificationNumber}</td>
                         <td>
                             <div className="btn-group">
                                 <Link

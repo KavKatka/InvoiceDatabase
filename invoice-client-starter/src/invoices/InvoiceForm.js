@@ -59,7 +59,7 @@ const InvoiceForm = () => {
 
     return (
         <div>
-            <h1>{id ? "Upravit" : "Vytvořit"} osobnost</h1>
+            <h1>{id ? "Upravit" : "Vytvořit"} faktura</h1>
             <hr/>
             {errorState ? (
                 <div className="alert alert-danger">{errorState}</div>
@@ -74,13 +74,37 @@ const InvoiceForm = () => {
                 <InputField
                     required={true}
                     type="text"
-                    name="personName"
+                    name="invoiceNumber"
                     min="3"
-                    label="Jméno"
-                    prompt="Zadejte celé jméno"
-                    value={person.name}
+                    label="Číslo faktury"
+                    prompt="Zadejte číslo faktury"
+                    value={invoice.invoiceNumber}
                     handleChange={(e) => {
-                        setPerson({...person, name: e.target.value});
+                        setInvoice({...invoice, name: e.target.value});
+                    }}
+                />
+                <InputField
+                    required={true}
+                    type="text"
+                    name="identificationNumber"
+                    min="3"
+                    label="IČO"
+                    prompt="Zadejte IČO"
+                    value={person.identificationNumber}
+                    handleChange={(e) => {
+                        setPerson({...person, identificationNumber: e.target.value});
+                    }}
+                />
+                <InputField
+                    required={true}
+                    type="text"
+                    name="identificationNumber"
+                    min="3"
+                    label="IČO"
+                    prompt="Zadejte IČO"
+                    value={person.identificationNumber}
+                    handleChange={(e) => {
+                        setPerson({...person, identificationNumber: e.target.value});
                     }}
                 />
 
@@ -255,4 +279,4 @@ const InvoiceForm = () => {
     );
 };
 
-export default PersonForm;
+export default InvoiceForm;

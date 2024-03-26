@@ -4,19 +4,19 @@ import {useParams} from "react-router-dom";
 import {apiGet} from "../utils/api";
 import Country from "./Country";
 
-const PersonDetail = () => {
+const InvoiceDetail = () => {
     const {id} = useParams();
-    const [person, setPerson] = useState({});
+    const [invoice, setInvoice] = useState({});
 
     useEffect(() => {
-        apiGet("/api/persons" + id).then((data) => setPersons(data));
+        apiGet("/api/invoice" + id).then((data) => setInvoice(data));
     }, []);
     const country = Country.CZECHIA === person.country ? "Česká republika" : "Slovensko";
 
     return (
         <>
             <div>
-                <h1>Detail osoby</h1>
+                <h1>Detail faktury</h1>
                 <hr/>
                 <h3>{person.name} ({person.identificationNumber})</h3>
                 <p>
@@ -55,4 +55,4 @@ const PersonDetail = () => {
     );
 };
 
-export default PersonDetail;
+export default InvoiceDetail;
