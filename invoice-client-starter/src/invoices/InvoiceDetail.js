@@ -2,53 +2,60 @@ import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 
 import {apiGet} from "../utils/api";
-import Country from "./Country";
 
 const InvoiceDetail = () => {
     const {id} = useParams();
     const [invoice, setInvoice] = useState({});
 
     useEffect(() => {
-        apiGet("/api/invoice" + id).then((data) => setInvoice(data));
+        apiGet("/api/invoices/" + id).then((data) => setInvoice(data));
     }, []);
-    const country = Country.CZECHIA === person.country ? "Česká republika" : "Slovensko";
 
     return (
         <>
             <div>
                 <h1>Detail faktury</h1>
                 <hr/>
-                <h3>{person.name} ({person.identificationNumber})</h3>
+                <h3>{invoice.id} ({invoice.invoiceNumber})</h3>
                 <p>
-                    <strong>DIČ:</strong>
+                    <strong>Dodavatel</strong>
                     <br/>
-                    {person.taxNumber}
+                    {invoice.seller.id}
                 </p>
                 <p>
-                    <strong>Bankovní účet:</strong>
+                    <strong>Odběratel</strong>
                     <br/>
-                    {person.accountNumber}/{person.bankCode} ({person.iban})
+                    {invoice.buyer.id}
                 </p>
                 <p>
-                    <strong>Tel.:</strong>
+                    <strong>Datum vystavení</strong>
                     <br/>
-                    {person.telephone}
+                    {invoice.issued}
                 </p>
                 <p>
-                    <strong>Mail:</strong>
+                    <strong>Datum splatnosti</strong>
                     <br/>
-                    {person.mail}
+                    {invoice.dueDate}
                 </p>
                 <p>
-                    <strong>Sídlo:</strong>
+                    <strong>Produkt</strong>
                     <br/>
-                    {person.street}, {person.city},
-                    {person.zip}, {country}
+                    {invoice.product}
                 </p>
                 <p>
-                    <strong>Poznámka:</strong>
+                    <strong>Cena</strong>
                     <br/>
-                    {person.note}
+                    {invoice.price}
+                </p>
+                <p>
+                    <strong>DPH</strong>
+                    <br/>
+                    {invoice.vat}
+                </p>
+                <p>
+                    <strong>Poznámka</strong>
+                    <br/>
+                    {invoice.note}
                 </p>
             </div>
         </>

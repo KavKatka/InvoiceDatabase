@@ -42,25 +42,25 @@ export function App() {
   return (
     <Router>
       <div className="container">
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <Link to={"/persons"} className="nav-link">
-                Osoby
-              </Link>
-            </li>
-          </ul>
-        </nav>
-
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <Link to={"/invoices"} className="nav-link">
-                Faktury
-              </Link>
-            </li>
-          </ul>
-        </nav>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+              <ul className="navbar-nav mr-auto">
+                <li className="nav-item">
+                  <Link to={"/persons"} className="nav-link">
+                    Osoby
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+              <ul className="navbar-nav mr-auto">
+                <li className="nav-item">
+                  <Link to={"/invoices"} className="nav-link">
+                    Faktury
+                  </Link>
+                </li>
+              </ul>
+            </nav>
 
         <Routes>
           <Route index element={<Navigate to={"/persons"} />} />
