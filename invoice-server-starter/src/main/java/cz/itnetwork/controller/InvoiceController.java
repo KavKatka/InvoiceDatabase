@@ -1,9 +1,12 @@
 package cz.itnetwork.controller;
 
 import cz.itnetwork.dto.InvoiceDTO;
-import cz.itnetwork.dto.PersonDTO;
+import cz.itnetwork.dto.InvoiceStatisticDTO;
+import cz.itnetwork.entity.InvoiceEntity;
+import cz.itnetwork.entity.repository.InvoiceRepository;
 import cz.itnetwork.service.InvoiceService;
 import cz.itnetwork.service.PersonService;
+import org.hibernate.stat.Statistics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +22,9 @@ public class InvoiceController {
 
     @Autowired
     private PersonService personService;
+
+    @Autowired
+    private InvoiceRepository invoiceRepository;
 
     @PostMapping("/invoices")
     public InvoiceDTO addInvoice(@RequestBody InvoiceDTO invoiceDTO) {
@@ -55,5 +61,12 @@ public class InvoiceController {
     public InvoiceDTO removeInvoice(@PathVariable long id) {
         return invoiceService.removeInvoice(id);
     }
+
+    @GetMapping("/invoices/statistics")
+    public List<InvoiceStatisticDTO> getGeneralStatistic(){
+
+        return invoiceRepository.getGeneralStatistic();
+    }
+
 
 }
