@@ -22,6 +22,8 @@
 package cz.itnetwork.controller;
 
 import cz.itnetwork.dto.PersonDTO;
+import cz.itnetwork.dto.PersonStatisticDTO;
+import cz.itnetwork.entity.repository.PersonRepository;
 import cz.itnetwork.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,6 +37,9 @@ public class PersonController {
 
     @Autowired
     private PersonService personService;
+
+    @Autowired
+    private PersonRepository personRepository;
 
     @PostMapping("/persons")
     public PersonDTO addPerson(@RequestBody PersonDTO personDTO) {
@@ -62,5 +67,9 @@ public class PersonController {
         personService.removePerson(personId);
     }
 
+    @GetMapping("/persons/statistics")
+    public List<PersonStatisticDTO> getIndividualStatistic(){
+        return personRepository.getIndividualStatistic();
+    }
 }
 

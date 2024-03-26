@@ -16,13 +16,14 @@ public interface InvoiceRepository extends JpaRepository<InvoiceEntity, Long> {
 
 
    @Query(value = """
-                 SELECT SUM(allInvoices.price) AS allTimeSum, COUNT(*) AS invoicesCount, SUM(thisYear.price) AS currentYearSum
+                 SELECT cz.itnetwork.dto.InvoiceStatisticDTO
+                    (SUM(allInvoices.price) AS allTimeSum, COUNT(*) AS invoicesCount, SUM(thisYear.price) AS currentYearSum)
                  FROM invoice AS allInvoices
                  LEFT JOIN invoice AS thisYear
                  ON allInvoices.id = thisYear.id
                  AND YEAR(thisYear.issued) = YEAR(CURRENT_DATE)"""
             , nativeQuery = true)
-    List<InvoiceStatisticDTO> getGeneralStatistic();
+    InvoiceStatisticDTO getGeneralStatistic();
 
 
 

@@ -21,8 +21,10 @@
  */
 package cz.itnetwork.entity.repository;
 
+import cz.itnetwork.dto.PersonStatisticDTO;
 import cz.itnetwork.entity.PersonEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
@@ -30,5 +32,13 @@ public interface PersonRepository extends JpaRepository<PersonEntity, Long> {
 
     List<PersonEntity> findByHidden(boolean hidden);
 
+    @Query(value = """
+            SELECT new cz.itnetwork.dto.PersonStatisticDTO
+                (person.id AS personId, person.name AS personName, SUM(i.seller.sales) AS revenue)
+            FROM person AS person
+            LEFT JOIN invoice AS i
+            ON person.id = i.seller.id
+            GROUP BY person.id""")
+    List<PersonStatisticDTO> getIndividualStatistic();
 
 }

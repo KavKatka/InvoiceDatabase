@@ -2,6 +2,7 @@ package cz.itnetwork.dto.mapper;
 
 
 import cz.itnetwork.dto.InvoiceDTO;
+import cz.itnetwork.dto.InvoiceStatisticDTO;
 import cz.itnetwork.entity.InvoiceEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -22,6 +23,8 @@ public interface InvoiceMapper {
     @Mapping(target = "buyer", ignore = true)
     @Mapping(target = "seller", ignore = true)
     void updatedEntity(InvoiceDTO source, @MappingTarget InvoiceEntity target);
+
+
 
 
 

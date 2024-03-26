@@ -63,8 +63,7 @@ public class InvoiceController {
     }
 
     @GetMapping("/invoices/statistics")
-    public List<InvoiceStatisticDTO> getGeneralStatistic(){
-
+    public InvoiceStatisticDTO getGeneralStatistic(){
         return invoiceRepository.getGeneralStatistic();
     }
 
