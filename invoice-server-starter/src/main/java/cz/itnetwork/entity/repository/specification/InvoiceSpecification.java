@@ -31,7 +31,12 @@ public class InvoiceSpecification implements Specification<InvoiceEntity> {
         if(filter.getProduct() != null){
           //  predicateList.add(criteriaBuilder.equal())
         }
+        if(filter.getMinPrice() != null){
 
+        }
+        if (filter.getMaxPrice() != null){
+
+        }
         return null;
     }
 }
