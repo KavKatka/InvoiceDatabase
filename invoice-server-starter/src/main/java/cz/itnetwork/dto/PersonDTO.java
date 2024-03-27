@@ -27,6 +27,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Information about person
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

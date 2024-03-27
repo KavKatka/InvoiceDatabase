@@ -28,8 +28,13 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface PersonMapper {
-
+    /**
+     * Entity to DTO
+     */
     PersonEntity toEntity(PersonDTO source);
 
+    /**
+     * DTO to entity
+     */
     PersonDTO toDTO(PersonEntity source);
 }

@@ -2,6 +2,9 @@ package cz.itnetwork.entity.filter;
 
 import lombok.Data;
 
+/**
+ * Parameters for filters
+ */
 @Data
 public class InvoiceFilter {
 

@@ -16,6 +16,10 @@ import java.util.List;
 public class InvoiceSpecification implements Specification<InvoiceEntity> {
 
     private final InvoiceFilter filter;
+
+    /**
+     * Filters
+     */
     @Override
     public Predicate toPredicate(Root<InvoiceEntity> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
         List<Predicate> predicateList = new ArrayList<>();

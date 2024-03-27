@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Data for individual statistic
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
