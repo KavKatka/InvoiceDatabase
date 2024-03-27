@@ -23,8 +23,6 @@ public class InvoiceController {
     @Autowired
     private PersonService personService;
 
-    @Autowired
-    private InvoiceRepository invoiceRepository;
 
     @PostMapping("/invoices")
     public InvoiceDTO addInvoice(@RequestBody InvoiceDTO invoiceDTO) {
@@ -64,7 +62,7 @@ public class InvoiceController {
 
     @GetMapping("/invoices/statistics")
     public InvoiceStatisticDTO getGeneralStatistic(){
-        return invoiceRepository.getGeneralStatistic();
+        return invoiceService.getGeneralStatistic();
     }
 
 

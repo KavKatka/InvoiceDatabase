@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-
 import {apiGet} from "../utils/api";
 
 const InvoiceDetail = () => {
@@ -11,22 +10,25 @@ const InvoiceDetail = () => {
         apiGet("/api/invoices/" + id).then((data) => setInvoice(data));
     }, []);
 
+   
     return (
         <>
             <div>
                 <h1>Detail faktury</h1>
                 <hr/>
-                <h3>{invoice.id} ({invoice.invoiceNumber})</h3>
-                <p>
+                <h3> Číslo faktury: ({invoice.invoiceNumber})</h3>
+                 <p>
                     <strong>Dodavatel</strong>
                     <br/>
-                    {invoice.seller.id}
+                    {invoice.seller?.name}<br/>
+                    IČO: {invoice.seller?.identificationNumber}
                 </p>
                 <p>
                     <strong>Odběratel</strong>
                     <br/>
-                    {invoice.buyer.id}
-                </p>
+                    {invoice.buyer?.name}<br/>
+                    IČO: {invoice.buyer?.identificationNumber}
+                </p> 
                 <p>
                     <strong>Datum vystavení</strong>
                     <br/>

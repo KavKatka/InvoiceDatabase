@@ -9,7 +9,7 @@ const InvoiceIndex = () => {
 
     const deleteInvoice = async (id) => {
         try {
-            await apiDelete("/api/invoice/" + id);
+            await apiDelete("/api/invoices/" + id);
         } catch (error) {
             console.log(error.message);
             alert(error.message)

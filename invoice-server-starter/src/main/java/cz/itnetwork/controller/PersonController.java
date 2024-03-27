@@ -38,9 +38,6 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
-    @Autowired
-    private PersonRepository personRepository;
-
     @PostMapping("/persons")
     public PersonDTO addPerson(@RequestBody PersonDTO personDTO) {
         return  personService.addPerson(personDTO);
@@ -69,7 +66,7 @@ public class PersonController {
 
     @GetMapping("/persons/statistics")
     public List<PersonStatisticDTO> getIndividualStatistic(){
-        return personRepository.getIndividualStatistic();
+        return personService.getIndividualStatistic();
     }
 }
 

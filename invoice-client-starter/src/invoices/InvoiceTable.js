@@ -1,6 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
+
+
 const InvoiceTable = ({label, items, deleteInvoice}) => {
     return (
         <div>
@@ -12,8 +14,9 @@ const InvoiceTable = ({label, items, deleteInvoice}) => {
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Jméno</th>
-                    <th>Identifikační číslo</th>
+                    <th>Číslo faktury</th>
+                    <th>Produkt</th>
+                    <th>Cena</th>
                     <th colSpan={3}>Akce</th>
                 </tr>
                 </thead>
@@ -21,12 +24,13 @@ const InvoiceTable = ({label, items, deleteInvoice}) => {
                 {items.map((item, index) => (
                     <tr key={index + 1}>
                         <td>{index + 1}</td>
-                        <td>{item.name}</td>
-                        <td>{item.identificationNumber}</td>
+                        <td>{item.invoiceNumber}</td>
+                        <td>{item.product}</td>
+                        <td>{item.price} Kč</td>
                         <td>
                             <div className="btn-group">
                                 <Link
-                                    to={"/invoice/show/" + item._id}
+                                    to={"/invoices/show/" + item._id}
                                     className="btn btn-sm btn-info"
                                 >
                                     Zobrazit

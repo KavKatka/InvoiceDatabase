@@ -11,7 +11,7 @@ public class PersonStatisticDTO {
 
     private long personId;
 
-    private long personName;
+    private String personName;
 
     private long revenue;
 }

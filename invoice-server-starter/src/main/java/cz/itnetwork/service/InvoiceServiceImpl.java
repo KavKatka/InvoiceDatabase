@@ -1,6 +1,7 @@
 package cz.itnetwork.service;
 
 import cz.itnetwork.dto.InvoiceDTO;
+import cz.itnetwork.dto.InvoiceStatisticDTO;
 import cz.itnetwork.dto.mapper.InvoiceMapper;
 import cz.itnetwork.dto.mapper.PersonMapper;
 import cz.itnetwork.entity.InvoiceEntity;
@@ -78,6 +79,11 @@ public class InvoiceServiceImpl implements InvoiceService {
         InvoiceEntity invoice = fetchInvoiceById(id);
 
         return invoiceMapper.toDTO(invoice);
+    }
+
+    @Override
+    public InvoiceStatisticDTO getGeneralStatistic(){
+        return invoiceRepository.getGeneralStatistic();
     }
 
     private InvoiceEntity fetchInvoiceById(long id) {

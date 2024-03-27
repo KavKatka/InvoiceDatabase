@@ -12,18 +12,18 @@ const InvoiceForm = () => {
     const {id} = useParams();
     const [invoice, setInvoice] = useState({
         
-        invoiceNumber: "",
+        invoiceNumber: Number,
         seller: {
-            _id: ""
+            _id: Number
         },
         buyer: {
-            _id: ""
+            _id: Number
         },
-        issued: "",
-        dueDate: "",
+        issued: Date,
+        dueDate: Date,
         product: "",
-        price: "",
-        vat: "",
+        price: Number,
+        vat: Number,
         note: ""
     });
     const [sentState, setSent] = useState(false);
@@ -72,129 +72,65 @@ const InvoiceForm = () => {
             <form onSubmit={handleSubmit}>
                 <InputField
                     required={true}
-                    type="text"
+                    type="number"
                     name="invoiceNumber"
                     min="3"
                     label="Číslo faktury"
                     prompt="Zadejte číslo faktury"
                     value={invoice.invoiceNumber}
                     handleChange={(e) => {
-                        setInvoice({...invoice, name: e.target.value});
+                        setInvoice({...invoice, invoiceNumber: e.target.value});
                     }}
                 />
                 <InputField
                     required={true}
-                    type="text"
-                    name="identificationNumber"
-                    min="3"
-                    label="IČO"
-                    prompt="Zadejte IČO"
-                    value={person.identificationNumber}
+                    type="number"
+                    name="seller"
+                    min="1"
+                    label="Dodavatel"
+                    prompt="Zadejte ID Dodavatele"
+                    value={invoice.seller._id}
                     handleChange={(e) => {
-                        setPerson({...person, identificationNumber: e.target.value});
-                    }}
-                />
-                <InputField
-                    required={true}
-                    type="text"
-                    name="identificationNumber"
-                    min="3"
-                    label="IČO"
-                    prompt="Zadejte IČO"
-                    value={person.identificationNumber}
-                    handleChange={(e) => {
-                        setPerson({...person, identificationNumber: e.target.value});
+                        setInvoice({...invoice, seller: e.target.value});
                     }}
                 />
 
                 <InputField
                     required={true}
-                    type="text"
-                    name="identificationNumber"
-                    min="3"
-                    label="IČO"
-                    prompt="Zadejte IČO"
-                    value={person.identificationNumber}
+                    type="number"
+                    name="buyer"
+                    min="1"
+                    label="Odběratel"
+                    prompt="Zadejte ID Odběratele"
+                    value={invoice.buyer._id}
                     handleChange={(e) => {
-                        setPerson({...person, identificationNumber: e.target.value});
+                        setInvoice({...invoice, buyer: e.target.value});
                     }}
                 />
 
                 <InputField
                     required={true}
-                    type="text"
-                    name="taxNumber"
+                    type="date"
+                    name="issued"
                     min="3"
-                    label="DIČ"
-                    prompt="Zadejte DIČ"
-                    value={person.taxNumber}
+                    label="Datum vystavení"
+                    prompt="Zadejte datum vystavení"
+                    value={invoice.issued}
                     handleChange={(e) => {
-                        setPerson({...person, taxNumber: e.target.value});
+                        setInvoice({...invoice, issued: e.target.value});
                     }}
                 />
 
                 <InputField
                     required={true}
-                    type="text"
-                    name="accountNumber"
+                    type="date"
+                    name="dueDate"
                     min="3"
-                    label="Číslo bankovního účtu"
-                    prompt="Zadejte číslo bankovního účtu"
-                    value={person.accountNumber}
+                    label="Datum splatnosti"
+                    prompt="Zadejte datum splatnosti"
+                    value={invoice.dueDate}
                     handleChange={(e) => {
-                        setPerson({...person, accountNumber: e.target.value});
-                    }}
-                />
-
-                <InputField
-                    required={true}
-                    type="text"
-                    name="bankCode"
-                    min="3"
-                    label="Kód banky"
-                    prompt="Zadejte kód banky"
-                    value={person.bankCode}
-                    handleChange={(e) => {
-                        setPerson({...person, bankCode: e.target.value});
-                    }}
-                />
-
-                <InputField
-                    required={true}
-                    type="text"
-                    name="IBAN"
-                    min="3"
-                    label="IBAN"
-                    prompt="Zadejte IBAN"
-                    value={person.iban}
-                    handleChange={(e) => {
-                        setPerson({...person, iban: e.target.value});
-                    }}
-                />
-
-                <InputField
-                    required={true}
-                    type="text"
-                    name="telephone"
-                    min="3"
-                    label="Telefon"
-                    prompt="Zadejte Telefon"
-                    value={person.telephone}
-                    handleChange={(e) => {
-                        setPerson({...person, telephone: e.target.value});
-                    }}
-                />
-
-                <InputField
-                    required={true}
-                    type="text"
-                    name="mail"
-                    min="3"
-                    label="Mail"
-                    prompt="Zadejte mail"
-                    value={person.mail}
-                    handleChange={(e) => {
-                        setPerson({...person, mail: e.target.value});
+                        setInvoice({...invoice, dueDate: e.target.value});
                     }}
                 />
 
@@ -213,9 +149,9 @@ const InvoiceForm = () => {
 
                 <InputField
                     required={true}
-                    type="text"
+                    type="number"
                     name="price"
-                    min="3"
+                    min="1"
                     label="Cena"
                     prompt="Zadejte cenu"
                     value={invoice.price}
@@ -226,9 +162,9 @@ const InvoiceForm = () => {
 
                 <InputField
                     required={true}
-                    type="text"
+                    type="number"
                     name="vat"
-                    min="3"
+                    min="1"
                     label="DPH"
                     prompt="Zadejte výši DPH"
                     value={invoice.vat}
