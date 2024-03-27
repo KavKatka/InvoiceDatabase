@@ -39,19 +39,31 @@ import java.util.stream.Collectors;
 
 @Service
 public class PersonServiceImpl implements PersonService {
-
+    /**
+     * DI person mapper
+     */
     @Autowired
     private PersonMapper personMapper;
-
+    /**
+     * DI person repository
+     */
     @Autowired
     private PersonRepository personRepository;
-
+    /**
+     * DI invoice mapper
+     */
     @Autowired
     private InvoiceMapper invoiceMapper;
-
+    /**
+     * DI invoice repository
+     */
     @Autowired
     private InvoiceRepository invoiceRepository;
 
+    /**
+     * Method to add person to database in DTO format
+     * @param personDTO Person to create
+     */
     public PersonDTO addPerson(PersonDTO personDTO) {
         PersonEntity entity = personMapper.toEntity(personDTO);
         PersonEntity newEntity = personRepository.save(entity);
@@ -59,6 +71,12 @@ public class PersonServiceImpl implements PersonService {
         return personMapper.toDTO(newEntity);
     }
 
+    /**
+     * Method to edit existing person and original information set hidden
+     * @param personDTO person to edit
+     * @param id find person to edit by id
+     * @return new edited person
+     */
     @Override
     public PersonDTO editPerson(PersonDTO personDTO, long id) {
 
@@ -73,6 +91,11 @@ public class PersonServiceImpl implements PersonService {
         return personMapper.toDTO(newPerson);
     }
 
+    /**
+     * Method to get detail information for specific person by id
+     * @param id search person by id
+     * @return details of person
+     */
     @Override
     public PersonDTO getDetail(long id) {
 
@@ -81,21 +104,32 @@ public class PersonServiceImpl implements PersonService {
         return personMapper.toDTO(person);
     }
 
+    /**
+     * Method to get List of sales by identification number of person
+     * @param identificationNumber identification number of specific person
+     * @return all sales by specific person
+     */
     @Override
     public List<InvoiceDTO> getSales(String identificationNumber) {
 
         return invoiceMapper.toDTOs(invoiceRepository.findByBuyer_IdentificationNumber(identificationNumber));
     }
 
+    /**
+     * Method to get List of purchases by identification number of specific person
+     * @param identificationNumber identification number of specific person
+     * @return all purchases by specific person
+     */
     @Override
     public List<InvoiceDTO> getPurchases(String identificationNumber) {
 
         return invoiceMapper.toDTOs(invoiceRepository.findBySeller_IdentificationNumber(identificationNumber));
     }
 
-
-
-
+    /**
+     * Method to delete person by id
+     * @param personId Person to delete
+     */
     @Override
     public void removePerson(long personId) {
         try {
@@ -108,6 +142,9 @@ public class PersonServiceImpl implements PersonService {
         }
     }
 
+    /**
+     * Method to get all persons in database
+     */
     @Override
     public List<PersonDTO> getAll() {
         return personRepository.findByHidden(false)
@@ -116,6 +153,9 @@ public class PersonServiceImpl implements PersonService {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Method to get List of statistic by specific person
+     */
     @Override
     public List<PersonStatisticDTO> getIndividualStatistic(){
         return personRepository.getIndividualStatistic();

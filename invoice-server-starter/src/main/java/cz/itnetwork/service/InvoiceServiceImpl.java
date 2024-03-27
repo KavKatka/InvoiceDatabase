@@ -17,20 +17,32 @@ import java.util.stream.Collectors;
 
 @Service
 public class InvoiceServiceImpl implements InvoiceService {
-
+    /**
+     * DI invoice mapper
+     */
     @Autowired
     private InvoiceMapper invoiceMapper;
-
+    /**
+     * DI invoice repository
+     */
     @Autowired
     private InvoiceRepository invoiceRepository;
-
+    /**
+     * DI person mapper
+     */
     @Autowired
     private PersonMapper personMapper;
-
+    /**
+     * DI person repository
+     */
     @Autowired
     private PersonRepository personRepository;
 
-
+    /**
+     * Method to create new invoice
+     * @param invoiceDTO specific data to create new invoice
+     * @return new invoice
+     */
     @Override
     public InvoiceDTO addInvoice(InvoiceDTO invoiceDTO) {
         InvoiceEntity invoice = invoiceMapper.toEntity(invoiceDTO);
@@ -44,7 +56,12 @@ public class InvoiceServiceImpl implements InvoiceService {
         return invoiceMapper.toDTO(invoice);
     }
 
-
+    /**
+     * Method to edit existing invoice
+     * @param invoiceDTO data for editing
+     * @param id search by id
+     * @return edited invoice with same id
+     */
     @Override
     public InvoiceDTO editInvoice(InvoiceDTO invoiceDTO, long id) {
         fetchInvoiceById(id);
@@ -56,6 +73,9 @@ public class InvoiceServiceImpl implements InvoiceService {
         return invoiceMapper.toDTO(updatedInvoice);
     }
 
+    /**
+     * Method to get all invoices
+     */
     @Override
     public List<InvoiceDTO> getAll() {
         return invoiceRepository.findAll()
@@ -64,6 +84,10 @@ public class InvoiceServiceImpl implements InvoiceService {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Method to delete invoice
+     * @param id search by id to delete invoice
+     */
     @Override
     public InvoiceDTO removeInvoice(long id) {
         InvoiceEntity invoice = fetchInvoiceById(id);
@@ -73,7 +97,11 @@ public class InvoiceServiceImpl implements InvoiceService {
         return invoiceMapper.toDTO(invoice);
     }
 
-
+    /**
+     * Get detail of specific invoice by id
+     * @param id search invoice
+     * @return detail of invoice
+     */
     @Override
     public InvoiceDTO getDetail(long id) {
         InvoiceEntity invoice = fetchInvoiceById(id);
@@ -81,16 +109,28 @@ public class InvoiceServiceImpl implements InvoiceService {
         return invoiceMapper.toDTO(invoice);
     }
 
+    /**
+     * Get general statistic per year
+     */
     @Override
     public InvoiceStatisticDTO getGeneralStatistic(){
         return invoiceRepository.getGeneralStatistic();
     }
 
+    /**
+     * Find invoice by id
+     * @param id search by id
+     * @return invoice by id or throw NotFoundException
+     */
     private InvoiceEntity fetchInvoiceById(long id) {
         return invoiceRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Invoice with id " + id + " wasn't found in the database."));
     }
-
+    /**
+     * Find person by id
+     * @param id search by id
+     * @return person by id or throw NotFoundException
+     */
     private PersonEntity fetchPersonById(long id) {
         return personRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Person with id " + id + " wasn't found in the database."));

@@ -16,8 +16,19 @@ public interface PersonService {
      */
     PersonDTO addPerson(PersonDTO personDTO);
 
+    /**
+     * Edit existing person
+     * @param personDTO information of person
+     * @param id edited person get new id
+     * @return new edited person
+     */
     PersonDTO editPerson(PersonDTO personDTO, long id);
 
+    /**
+     * Get detail by specific person
+     * @param id search person by id
+     * @return detail information of person
+     */
     PersonDTO getDetail(long id);
 
     /**
@@ -35,10 +46,22 @@ public interface PersonService {
      */
     List<PersonDTO> getAll();
 
+    /**
+     * Get all purchases
+     * @param identificationNumber search purchases by specific identification number
+     * @return  List of all purchases by specific person
+     */
     List<InvoiceDTO> getPurchases(String identificationNumber);
-
+    /**
+     * Get all sales
+     * @param identificationNumber search sales by specific identification number
+     * @return  List of all sales by specific person
+     */
     List<InvoiceDTO> getSales(String identificationNumber);
 
+    /**
+     * Get individual statistic
+     */
     List<PersonStatisticDTO> getIndividualStatistic();
 
 }
