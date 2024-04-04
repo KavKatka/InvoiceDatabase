@@ -39,12 +39,13 @@ import InvoiceDetail from "./invoices/InvoiceDetail"
 import InvoiceForm from "./invoices/InvoiceForm"
 import {IndividualStatistic} from "./statistics/PersonStatistic"
 import { GeneralStatistic } from "./statistics/InvoiceStatistic";
+import { PurchasesTable } from "./persons/PurchasesTable";
+import { SalesTable } from "./persons/SalesTable";
 
 export function App() {
   return (
     <Router>
       <div className="container">
-        
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
@@ -90,7 +91,6 @@ export function App() {
             <Route path="show/:id" element={<PersonDetail />} />
             <Route path="create" element={<PersonForm />} />
             <Route path="edit/:id" element={<PersonForm />} />
-            
           </Route>
         </Routes>
 
@@ -104,7 +104,6 @@ export function App() {
           </Route>
         </Routes>
         </div>
-      
     </Router>
   );
 }
