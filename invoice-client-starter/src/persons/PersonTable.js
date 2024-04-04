@@ -35,6 +35,7 @@ const PersonTable = ({label, items, deletePerson}) => {
                 <tr>
                     <th>#</th>
                     <th>Jméno</th>
+                    <th>IČO</th>
                     <th colSpan={3}>Akce</th>
                 </tr>
                 </thead>
@@ -43,6 +44,7 @@ const PersonTable = ({label, items, deletePerson}) => {
                     <tr key={index + 1}>
                         <td>{index + 1}</td>
                         <td>{item.name}</td>
+                        <td>{item.identificationNumber}</td>
                         <td>
                             <div className="btn-group">
                                 <Link

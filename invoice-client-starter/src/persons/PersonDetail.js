@@ -25,6 +25,7 @@ import {useParams} from "react-router-dom";
 
 import {apiGet} from "../utils/api";
 import Country from "./Country";
+import { PurchasesAndSales } from "./PurchasesAndSalesTable";
 
 const PersonDetail = () => {
     const {id} = useParams();
@@ -37,7 +38,8 @@ const PersonDetail = () => {
 
     return (
         <>
-            <div>
+        <div className="row">
+            <div className="col-6">
                 <h1>Detail osoby</h1>
                 <hr/>
                 <h3>{person.name} ({person.identificationNumber})</h3>
@@ -73,6 +75,15 @@ const PersonDetail = () => {
                     {person.note}
                 </p>
             </div>
+            
+            <div className="col-6">
+                <h3>Přehled</h3>
+                <br/>
+                    
+            </div>
+        </div>
+            
+            
         </>
     );
 };

@@ -5,6 +5,7 @@ import {apiGet, apiPost, apiPut} from "../utils/api";
 
 import InputField from "../components/InputField";
 import FlashMessage from "../components/FlashMessage";
+import InputSelect from "../components/InputSelect";
 
 
 const InvoiceForm = () => {
@@ -12,29 +13,36 @@ const InvoiceForm = () => {
     const {id} = useParams();
     const [invoice, setInvoice] = useState({
         
-        invoiceNumber: Number,
+        invoiceNumber: "",
         seller: {
-            _id: Number
+            _id: ""
         },
         buyer: {
-            _id: Number
+            _id: ""
         },
         issued: Date,
         dueDate: Date,
         product: "",
-        price: Number,
-        vat: Number,
+        price: "",
+        vat: "",
         note: ""
     });
     const [sentState, setSent] = useState(false);
     const [successState, setSuccess] = useState(false);
     const [errorState, setError] = useState(null);
 
+    const [buyerList, setBuyerList] = useState([]);
+    const [sellerList, setSellerList] = useState([]);
+
     useEffect(() => {
         if (id) {
             apiGet("/api/invoices/" + id).then((data) => setInvoice(data));
         }
+        apiGet("/api/persons").then((data) => setBuyerList(data));
+        apiGet("/api/persons").then((data) => setSellerList(data));
     }, [id]);
+
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -58,7 +66,7 @@ const InvoiceForm = () => {
 
     return (
         <div>
-            <h1>{id ? "Upravit" : "Vytvořit"} faktura</h1>
+            <h1>{id ? "Upravit" : "Vytvořit"} fakturu</h1>
             <hr/>
             {errorState ? (
                 <div className="alert alert-danger">{errorState}</div>
@@ -72,7 +80,7 @@ const InvoiceForm = () => {
             <form onSubmit={handleSubmit}>
                 <InputField
                     required={true}
-                    type="number"
+                    type="text"
                     name="invoiceNumber"
                     min="3"
                     label="Číslo faktury"
@@ -82,32 +90,64 @@ const InvoiceForm = () => {
                         setInvoice({...invoice, invoiceNumber: e.target.value});
                     }}
                 />
+
+                <InputSelect 
+                    items={sellerList}
+                    required={true}
+                    multiple={false}
+                    type="text"
+                    name="seller"
+                    label="Odběratel"
+                    prompt="Vyberte dodavatele"
+                    value={invoice.seller._id}
+                    handleChange={(e) => {
+                        setInvoice({...invoice, seller:{_id: e.target.value}})
+                    }}
+                />
+                
+                <InputSelect 
+                    items={buyerList}
+                    required={true}
+                    multiple={false}
+                    type="text"
+                    name="buyer"
+                    label="Dodavatel"
+                    prompt="Vyberte odběratele"
+                    value={invoice.buyer._id}
+                    handleChange={(e) => {
+                        setInvoice({...invoice, buyer:{_id: e.target.value}})
+                    }}
+                />
+                
+                {/* 
+                Původní inputField - změna na Select
+
                 <InputField
                     required={true}
-                    type="number"
+                    type="text"
                     name="seller"
                     min="1"
                     label="Dodavatel"
                     prompt="Zadejte ID Dodavatele"
                     value={invoice.seller._id}
                     handleChange={(e) => {
-                        setInvoice({...invoice, seller: e.target.value});
+                        setInvoice({...invoice, seller:{_id: e.target.value}});
                     }}
                 />
-
+               
                 <InputField
                     required={true}
-                    type="number"
+                    type="text"
                     name="buyer"
                     min="1"
                     label="Odběratel"
                     prompt="Zadejte ID Odběratele"
                     value={invoice.buyer._id}
                     handleChange={(e) => {
-                        setInvoice({...invoice, buyer: e.target.value});
+                        setInvoice({...invoice, buyer:{_id: e.target.value}});
                     }}
-                />
-
+                /> */}
+               
                 <InputField
                     required={true}
                     type="date"
@@ -149,7 +189,7 @@ const InvoiceForm = () => {
 
                 <InputField
                     required={true}
-                    type="number"
+                    type="text"
                     name="price"
                     min="1"
                     label="Cena"
@@ -162,7 +202,7 @@ const InvoiceForm = () => {
 
                 <InputField
                     required={true}
-                    type="number"
+                    type="text"
                     name="vat"
                     min="1"
                     label="DPH"

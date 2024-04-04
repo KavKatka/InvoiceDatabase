@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {apiGet} from "../utils/api";
+import { Link } from "react-router-dom";
 
 const InvoiceDetail = () => {
     const {id} = useParams();
@@ -21,7 +22,8 @@ const InvoiceDetail = () => {
                     <strong>Dodavatel</strong>
                     <br/>
                     {invoice.seller?.name}<br/>
-                    IČO: {invoice.seller?.identificationNumber}
+                    IČO:  {invoice.seller?.identificationNumber}
+                  
                 </p>
                 <p>
                     <strong>Odběratel</strong>
@@ -47,12 +49,12 @@ const InvoiceDetail = () => {
                 <p>
                     <strong>Cena</strong>
                     <br/>
-                    {invoice.price}
+                    {invoice.price} Kč
                 </p>
                 <p>
                     <strong>DPH</strong>
                     <br/>
-                    {invoice.vat}
+                    {invoice.vat} %
                 </p>
                 <p>
                     <strong>Poznámka</strong>

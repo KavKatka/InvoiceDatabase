@@ -160,6 +160,8 @@ public class PersonServiceImpl implements PersonService {
     public List<PersonStatisticDTO> getIndividualStatistic(){
         return personRepository.getIndividualStatistic();
     }
+
+
     // region: Private methods
 
     /**

@@ -37,11 +37,14 @@ import PersonForm from "./persons/PersonForm";
 import InvoiceIndex from "./invoices/InvoiceIndex";
 import InvoiceDetail from "./invoices/InvoiceDetail"
 import InvoiceForm from "./invoices/InvoiceForm"
+import {IndividualStatistic} from "./statistics/PersonStatistic"
+import { GeneralStatistic } from "./statistics/InvoiceStatistic";
 
 export function App() {
   return (
     <Router>
       <div className="container">
+        
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
@@ -49,18 +52,36 @@ export function App() {
                     Osoby
                   </Link>
                 </li>
-              </ul>
-            </nav>
-          
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-              <ul className="navbar-nav mr-auto">
+              
                 <li className="nav-item">
                   <Link to={"/invoices"} className="nav-link">
                     Faktury
                   </Link>
                 </li>
+             
+                <li className="nav-item">
+                  <Link to={"/invoices/statistics"} className="nav-link">
+                    Statistiky - faktury
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to={"/persons/statistics"} className="nav-link">
+                    Statistiky - osoby
+                  </Link>
+                </li>
               </ul>
             </nav>
+
+        <Routes>
+          <Route index element={<Navigate to={"/invoices/statistics"} />} />
+          <Route path="/invoices/statistics" element={<GeneralStatistic/>}>
+          </Route>
+        </Routes>
+        <Routes>
+          <Route index element={<Navigate to={"/persons/statistics"} />} />
+          <Route path="/persons/statistics" element={<IndividualStatistic/>}>
+          </Route>
+        </Routes>
 
         <Routes>
           <Route index element={<Navigate to={"/persons"} />} />
@@ -69,6 +90,7 @@ export function App() {
             <Route path="show/:id" element={<PersonDetail />} />
             <Route path="create" element={<PersonForm />} />
             <Route path="edit/:id" element={<PersonForm />} />
+            
           </Route>
         </Routes>
 
@@ -81,7 +103,8 @@ export function App() {
             <Route path="edit/:id" element={<InvoiceForm />} />
           </Route>
         </Routes>
-      </div>
+        </div>
+      
     </Router>
   );
 }

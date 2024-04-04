@@ -16,5 +16,5 @@ public class PersonStatisticDTO {
 
     private String personName;
 
-    private long revenue;
+    private Long revenue;
 }

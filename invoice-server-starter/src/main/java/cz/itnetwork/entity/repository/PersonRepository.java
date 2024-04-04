@@ -35,14 +35,14 @@ public interface PersonRepository extends JpaRepository<PersonEntity, Long> {
     List<PersonEntity> findByHidden(boolean hidden);
 
     /**
-     * Individual statistic query
+     * Individual statistic
      */
     @Query(value = """
             SELECT new cz.itnetwork.dto.PersonStatisticDTO
                 (person.id AS personId, person.name AS personName, SUM(i.price) AS revenue)
             FROM person AS person
             LEFT JOIN invoice AS i
-            ON person.id = i.seller.id
+            ON person.id = i.seller
             GROUP BY person.id, person.name""")
     List<PersonStatisticDTO> getIndividualStatistic();
 
