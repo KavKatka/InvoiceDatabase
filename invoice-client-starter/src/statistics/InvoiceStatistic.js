@@ -25,9 +25,9 @@ export function GeneralStatistic(){
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{statisticsState.allTimeSum}</td>
+                        <td>{statisticsState.allTimeSum} </td>
                         <td>{statisticsState.invoicesCount}</td>
-                        <td>{statisticsState.currentYearSum}</td>
+                        <td>{statisticsState.currentYearSum} </td>
                     </tr>
                     
                 </tbody>

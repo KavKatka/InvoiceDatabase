@@ -51,7 +51,9 @@ export const InvoiceFilter =(props) => {
                         value={filter.product ? filter.product : ''}
                     />
                 </div>
-                <div className="col">
+            </div>
+            <div className="row">
+            <div className="col">
                     <InputField
                         
                         type="number"
@@ -82,11 +84,13 @@ export const InvoiceFilter =(props) => {
                         name="limit"
                         handleChange={handleChange}
                         label="Limit počtu faktur"
-                        prompt="neuveden"
+                        prompt="Zadejte limit počtu faktur"
                         value={filter.limit ? filter.limit : ''}
                     />
                 </div>
             </div>
+                
+            
             <div className="row">
                 <div className="col">
                     <input  

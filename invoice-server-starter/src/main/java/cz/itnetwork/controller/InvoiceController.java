@@ -35,10 +35,6 @@ public class InvoiceController {
         return invoiceService.getAllFiltered(invoiceFilter);
     }
 
-    /*@GetMapping("/invoices")
-    public List<InvoiceDTO> getAll(){
-        return invoiceService.getAll();
-    }*/
     @GetMapping("/identification/{identificationNumber}/purchases")
     public List<InvoiceDTO> getPurchases(@PathVariable String identificationNumber) {
         return personService.getPurchases(identificationNumber);

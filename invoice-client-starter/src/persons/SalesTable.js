@@ -5,15 +5,15 @@ import { apiGet } from "../utils/api";
 export const SalesTable = () => {
 
     const [sales, setSales] = useState([]); 
-    // const [invoices, setInvoices] = useState([]);
-    // const [identificationNumber,setIdentificationNumber] = useState("");
-    // const [person, setPerson] = useState("");
+    const [invoices, setInvoices] = useState([]);
+    const [identificationNumber,setIdentificationNumber] = useState("");
+    const [person, setPerson] = useState("");
     
     
     useEffect(() => {
-        // apiGet("/api/invoices").then((data) => setInvoices(data));
-        // apiGet("/api/persons").then((data) => setPerson(data));
-        // apiGet("/api/identification/" + person.identificationNumber +"/sales").then((data) => setIdentificationNumber(data));
+         apiGet("/api/invoices").then((data) => setInvoices(data));
+         apiGet("/api/persons").then((data) => setPerson(data));
+         apiGet("/api/identification/" + person.identificationNumber +"/sales").then((data) => setSales(data));
     },[]);
     
 

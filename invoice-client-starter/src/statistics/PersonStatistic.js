@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { apiGet } from "../utils/api";
+import { Link } from "react-router-dom";
 
 export function IndividualStatistic() {
 
@@ -25,7 +26,11 @@ export function IndividualStatistic() {
                     {statisticsState.map((statistic, index) => (
                         <tr key={index + 1}>
                             <td>{statistic.personId}</td>
-                            <td>{statistic.personName}</td>
+                            <td>
+                                <Link to={"/persons/show/" + statistic.personId}>
+                                    {statistic.personName}
+                                </Link>
+                            </td>
                             <td>{statistic.revenue}</td>
                         </tr> 
                     ))}

@@ -81,7 +81,7 @@ public class InvoiceServiceImpl implements InvoiceService {
     }
 
     /**
-     * Method to get all invoices
+     * Method to get all invoices with filters
      */
     @Override
     public List<InvoiceDTO> getAllFiltered(InvoiceFilter invoiceFilter) {
@@ -92,14 +92,6 @@ public class InvoiceServiceImpl implements InvoiceService {
                 .map(invoiceMapper::toDTO)
                 .collect(Collectors.toList());
     }
-
-    /*@Override
-    public List<InvoiceDTO> getAll(){
-        return invoiceRepository.findAll()
-                .stream()
-                .map(i -> invoiceMapper.toDTO(i))
-                .collect(Collectors.toList());
-    }*/
 
 
     /**
