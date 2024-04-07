@@ -44,7 +44,7 @@ const PersonDetail = () => {
                 <div className="col-6">
                     <h1>Detail osoby</h1>
                     <hr/>
-                    <h3>{person.name} ({person.identificationNumber})</h3>
+                    <h2>{person.name} ({person.identificationNumber})</h2>
                     <p>
                         <strong>DIČ:</strong>
                         <br/>

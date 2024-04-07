@@ -21,14 +21,20 @@ const InvoiceDetail = () => {
                  <p>
                     <strong>Dodavatel</strong>
                     <br/>
-                    {invoice.seller?.name}<br/>
+                    <Link to={"/persons/show/" + invoice.seller?._id}>
+                        {invoice.seller?.name}
+                    </Link>
+                    <br/>
                     IČO:  {invoice.seller?.identificationNumber}
                   
                 </p>
                 <p>
                     <strong>Odběratel</strong>
                     <br/>
-                    {invoice.buyer?.name}<br/>
+                    <Link to={"/persons/show/" + invoice.buyer?._id}>
+                        {invoice.buyer?.name}
+                    </Link>
+                    <br/>
                     IČO: {invoice.buyer?.identificationNumber}
                 </p> 
                 <p>
