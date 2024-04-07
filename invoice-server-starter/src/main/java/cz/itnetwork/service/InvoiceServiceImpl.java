@@ -84,22 +84,22 @@ public class InvoiceServiceImpl implements InvoiceService {
      * Method to get all invoices
      */
     @Override
-    public List<InvoiceDTO> getAll(InvoiceFilter invoiceFilter) {
+    public List<InvoiceDTO> getAllFiltered(InvoiceFilter invoiceFilter) {
         InvoiceSpecification invoiceSpecification = new InvoiceSpecification(invoiceFilter);
-
 
         return invoiceRepository.findAll(invoiceSpecification, PageRequest.of(0,invoiceFilter.getLimit()))
                 .stream()
                 .map(invoiceMapper::toDTO)
                 .collect(Collectors.toList());
-
-
-
-               /* invoiceRepository.findAll(invoiceSpecification)
-                        .stream()
-                        .map(i -> invoiceMapper.toDTO(i))
-                        .collect(Collectors.toList());*/
     }
+
+    /*@Override
+    public List<InvoiceDTO> getAll(){
+        return invoiceRepository.findAll()
+                .stream()
+                .map(i -> invoiceMapper.toDTO(i))
+                .collect(Collectors.toList());
+    }*/
 
 
     /**

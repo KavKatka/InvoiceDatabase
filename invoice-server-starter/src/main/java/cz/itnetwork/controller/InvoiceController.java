@@ -31,11 +31,14 @@ public class InvoiceController {
     }
 
     @GetMapping("/invoices")
-    public List<InvoiceDTO> getAll(@RequestBody InvoiceFilter filter, @RequestParam int limit) {
-        return invoiceService.getAll(filter);
+    public List<InvoiceDTO> getAllFiltered(InvoiceFilter invoiceFilter, @RequestParam int limit) {
+        return invoiceService.getAllFiltered(invoiceFilter);
     }
 
-
+    /*@GetMapping("/invoices")
+    public List<InvoiceDTO> getAll(){
+        return invoiceService.getAll();
+    }*/
     @GetMapping("/identification/{identificationNumber}/purchases")
     public List<InvoiceDTO> getPurchases(@PathVariable String identificationNumber) {
         return personService.getPurchases(identificationNumber);

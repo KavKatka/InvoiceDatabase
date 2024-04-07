@@ -25,25 +25,22 @@ public class InvoiceSpecification implements Specification<InvoiceEntity> {
     public Predicate toPredicate(Root<InvoiceEntity> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
         List<Predicate> predicateList = new ArrayList<>();
 
-        if (filter.getSellerID() != null){
+        if (filter.getSellerID() != null) {
             Join<InvoiceEntity, PersonEntity> sellerJoin = root.join(InvoiceEntity_.SELLER);
             predicateList.add(criteriaBuilder.equal(sellerJoin.get(PersonEntity_.ID), filter.getSellerID()));
         }
-        if (filter.getBuyerID() != null){
+        if (filter.getBuyerID() != null) {
             Join<InvoiceEntity, PersonEntity> buyerJoin = root.join(InvoiceEntity_.BUYER);
             predicateList.add(criteriaBuilder.equal(buyerJoin.get(PersonEntity_.ID), filter.getBuyerID()));
         }
-        if(filter.getProduct() != null){
-            Expression<String> productJoin = root.join(InvoiceEntity_.PRODUCT);
-            predicateList.add(productJoin.in(filter.getProduct()));
+        if (filter.getProduct() != null) {
+            predicateList.add(criteriaBuilder.like(root.get(InvoiceEntity_.PRODUCT), filter.getProduct()));
         }
-        if(filter.getMinPrice() != null){
-            Join<InvoiceEntity,PersonEntity> minPriceJoin = root.join(InvoiceEntity_.PRICE);
-            predicateList.add(criteriaBuilder.greaterThanOrEqualTo(minPriceJoin.get(InvoiceEntity_.PRICE),filter.getMinPrice()));
+        if (filter.getMinPrice() != null) {
+            predicateList.add(criteriaBuilder.greaterThanOrEqualTo(root.get(InvoiceEntity_.PRICE), filter.getMinPrice()));
         }
-        if (filter.getMaxPrice() != null){
-            Join<InvoiceEntity, PersonEntity> maxPriceJoin = root.join(InvoiceEntity_.PRICE);
-            predicateList.add(criteriaBuilder.lessThanOrEqualTo(maxPriceJoin.get(InvoiceEntity_.PRICE), filter.getMaxPrice()));
+        if (filter.getMaxPrice() != null) {
+            predicateList.add(criteriaBuilder.lessThanOrEqualTo(root.get(InvoiceEntity_.PRICE), filter.getMaxPrice()));
         }
         return criteriaBuilder.and(predicateList.toArray(new Predicate[0]));
     }

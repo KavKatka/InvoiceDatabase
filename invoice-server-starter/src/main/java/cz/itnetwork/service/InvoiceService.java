@@ -42,7 +42,9 @@ public interface InvoiceService {
     /**
      * Get all invoices in database
      */
-    List<InvoiceDTO> getAll(InvoiceFilter invoiceFilter);
+    List<InvoiceDTO> getAllFiltered(InvoiceFilter invoiceFilter);
+
+   // List <InvoiceDTO> getAll();
 
 
     /**

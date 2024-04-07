@@ -5,19 +5,14 @@ import InputSelect from "../components/InputSelect";
 export const InvoiceFilter =(props) => {
 
     const handleChange = (e) => {
-        e.handleChange(e);
+        props.handleChange(e);
     }
 
     const handleSubmit = (e) => {
-        e.handleSubmit(e);
+        props.handleSubmit(e);
     }
 
     const filter = props.filter;
-
-    // const [buyerList, setBuyerList] = useState([]);
-    // const [sellerList, setSellerList] = useState([]);
-
-
 
     return(
         <form onSubmit={handleSubmit}>
@@ -26,6 +21,8 @@ export const InvoiceFilter =(props) => {
                     <InputSelect
                         name="buyerID"
                         items={props.buyerIDList}
+                        required={true}
+                        multiple={false}
                         handleChange={handleChange}
                         label="Odběratel"
                         prompt="nevybrán"
@@ -37,6 +34,8 @@ export const InvoiceFilter =(props) => {
                         name="sellerID"
                         items={props.sellerIDList}
                         handleChange={handleChange}
+                        required={true}
+                        multiple={false}
                         label="Dodavatel"
                         prompt="nevybrán"
                         value={filter.sellerID}
@@ -44,7 +43,7 @@ export const InvoiceFilter =(props) => {
                 </div>
                 <div className="col">
                     <InputField
-                        required={true}
+                        
                         type="text"
                         name="product"
                         min="3"
@@ -56,29 +55,48 @@ export const InvoiceFilter =(props) => {
                 </div>
                 <div className="col">
                     <InputField
-                        required={true}
+                        
                         type="number"
                         name="minPrice"
-                        min="1"
+                        min="0"
                         handleChange={handleChange}
                         label="Minimální cena"
                         prompt="Zadejte minimální cenu"
-                        value={filter.minPrice ? minPrice : ''}
+                        value={filter.minPrice ? filter.minPrice : ''}
                     />
                 </div>
                 <div className="col">
                     <InputField
-                        required={true}
+                        
                         type="number"
                         name="maxPrice"
-                        min="1"
+                        min="0"
                         handleChange={handleChange}
                         label="Maximální cena"
                         prompt="Zadejte maximální cenu"
                         value={filter.maxPrice ? filter.maxPrice : ''}
                     />
                 </div>
-
+                <div className="col">
+                    <InputField
+                        type="number"
+                        min="1"
+                        name="limit"
+                        handleChange={handleChange}
+                        label="Limit počtu faktur"
+                        prompt="neuveden"
+                        value={filter.limit ? filter.limit : ''}
+                    />
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <input  
+                        type="submit"
+                        className="btn btn-secondary float-right mt-2"
+                        value={props.confirm}
+                    />
+                </div>
             </div>
         </form>
             

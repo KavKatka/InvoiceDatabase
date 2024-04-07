@@ -18,5 +18,5 @@ public class InvoiceFilter {
 
     private Long maxPrice;
 
-    private int limit = 3;
+    private Integer limit = 3;
 }
