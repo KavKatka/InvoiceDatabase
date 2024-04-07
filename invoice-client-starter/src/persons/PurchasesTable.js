@@ -4,9 +4,9 @@ import { apiGet } from "../utils/api";
 
 export const PurchasesTable = () => {
 
-    const [invoices, setInvoices] = useState([]);
+    //const [invoices, setInvoices] = useState([]);
     const [purchases, setPurchases] = useState([]);
-    const [identificationNumber, setIdentificationNumber] = useState("");
+    //const [identificationNumber, setIdentificationNumber] = useState("");
 
     useEffect(() => {
         apiGet("/api/identification/{identificationNumber}/purchases").then((data) => setPurchases(data));
@@ -14,10 +14,9 @@ export const PurchasesTable = () => {
 
     return (
         <div>
-            <p>
-               <h5><em>Přijaté faktury</em></h5> 
-            </p>
             
+            <h5><em>Přijaté faktury</em></h5> 
+
             <table className="table table-bordered">
                 <thead>
                     <tr>

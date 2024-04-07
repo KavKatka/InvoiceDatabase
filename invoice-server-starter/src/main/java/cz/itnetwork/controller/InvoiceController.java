@@ -3,6 +3,7 @@ package cz.itnetwork.controller;
 import cz.itnetwork.dto.InvoiceDTO;
 import cz.itnetwork.dto.InvoiceStatisticDTO;
 import cz.itnetwork.entity.InvoiceEntity;
+import cz.itnetwork.entity.filter.InvoiceFilter;
 import cz.itnetwork.entity.repository.InvoiceRepository;
 import cz.itnetwork.service.InvoiceService;
 import cz.itnetwork.service.PersonService;
@@ -30,9 +31,10 @@ public class InvoiceController {
     }
 
     @GetMapping("/invoices")
-    public List<InvoiceDTO> getAll() {
-        return invoiceService.getAll();
+    public List<InvoiceDTO> getAll(@RequestBody InvoiceFilter filter, @RequestParam int limit) {
+        return invoiceService.getAll(filter);
     }
+
 
     @GetMapping("/identification/{identificationNumber}/purchases")
     public List<InvoiceDTO> getPurchases(@PathVariable String identificationNumber) {

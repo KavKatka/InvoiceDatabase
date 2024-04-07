@@ -6,12 +6,17 @@ import cz.itnetwork.dto.mapper.InvoiceMapper;
 import cz.itnetwork.dto.mapper.PersonMapper;
 import cz.itnetwork.entity.InvoiceEntity;
 import cz.itnetwork.entity.PersonEntity;
+import cz.itnetwork.entity.filter.InvoiceFilter;
 import cz.itnetwork.entity.repository.InvoiceRepository;
 import cz.itnetwork.entity.repository.PersonRepository;
+import cz.itnetwork.entity.repository.specification.InvoiceSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
+import javax.swing.text.html.parser.Entity;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,6 +42,8 @@ public class InvoiceServiceImpl implements InvoiceService {
      */
     @Autowired
     private PersonRepository personRepository;
+
+
 
     /**
      * Method to create new invoice
@@ -77,12 +84,23 @@ public class InvoiceServiceImpl implements InvoiceService {
      * Method to get all invoices
      */
     @Override
-    public List<InvoiceDTO> getAll() {
-        return invoiceRepository.findAll()
+    public List<InvoiceDTO> getAll(InvoiceFilter invoiceFilter) {
+        InvoiceSpecification invoiceSpecification = new InvoiceSpecification(invoiceFilter);
+
+
+        return invoiceRepository.findAll(invoiceSpecification, PageRequest.of(0,invoiceFilter.getLimit()))
                 .stream()
-                .map(i -> invoiceMapper.toDTO(i))
+                .map(invoiceMapper::toDTO)
                 .collect(Collectors.toList());
+
+
+
+               /* invoiceRepository.findAll(invoiceSpecification)
+                        .stream()
+                        .map(i -> invoiceMapper.toDTO(i))
+                        .collect(Collectors.toList());*/
     }
+
 
     /**
      * Method to delete invoice

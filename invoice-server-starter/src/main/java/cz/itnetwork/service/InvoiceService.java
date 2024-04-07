@@ -3,6 +3,8 @@ package cz.itnetwork.service;
 import cz.itnetwork.dto.InvoiceDTO;
 import cz.itnetwork.dto.InvoiceStatisticDTO;
 import cz.itnetwork.dto.PersonDTO;
+import cz.itnetwork.entity.InvoiceEntity;
+import cz.itnetwork.entity.filter.InvoiceFilter;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
@@ -40,7 +42,8 @@ public interface InvoiceService {
     /**
      * Get all invoices in database
      */
-    List<InvoiceDTO> getAll();
+    List<InvoiceDTO> getAll(InvoiceFilter invoiceFilter);
+
 
     /**
      * Get general statistic per year

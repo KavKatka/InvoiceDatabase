@@ -1,20 +1,27 @@
 import React, {useState, useEffect} from "react";
 import { apiGet } from "../utils/api";
 
+
 export const SalesTable = () => {
 
-    const [sales, setSales] = useState([]);
-
+    const [sales, setSales] = useState([]); 
+    // const [invoices, setInvoices] = useState([]);
+    // const [identificationNumber,setIdentificationNumber] = useState("");
+    // const [person, setPerson] = useState("");
+    
+    
     useEffect(() => {
-        apiGet("/api/identification/{identificationNumber}/sales").then((data) => setSales(data));
+        // apiGet("/api/invoices").then((data) => setInvoices(data));
+        // apiGet("/api/persons").then((data) => setPerson(data));
+        // apiGet("/api/identification/" + person.identificationNumber +"/sales").then((data) => setIdentificationNumber(data));
     },[]);
+    
 
+    
     return (
         <div>
-            <p>
-                <h5><em>Vystavené faktury</em></h5>
-            </p>
-            
+            <h5><em>Vystavené faktury</em></h5>
+
             <table className="table table-bordered">
                 <thead>
                     <tr>
