@@ -13,8 +13,11 @@ export const SalesTable = () => {
     useEffect(() => {
          apiGet("/api/invoices").then((data) => setInvoices(data));
          apiGet("/api/persons").then((data) => setPerson(data));
-         apiGet("/api/identification/" + person.identificationNumber +"/sales").then((data) => setSales(data));
+         apiGet("/api/identification/" + identificationNumber +"/sales").then((data) => setSales(data));
     },[]);
+
+    const data = 
+    setIdentificationNumber(data);
     
 
     

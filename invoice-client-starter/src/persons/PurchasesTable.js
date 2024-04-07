@@ -32,7 +32,11 @@ export const PurchasesTable = () => {
                 <tbody>
                     {purchases.map((purchase, index) => (
                         <tr key={index + 1}>    
-                            <td>{purchase.seller.name}</td>
+                            <td>
+                                <Link to={"/persons/show/" + purchase.seller._id}>
+                                    {purchase.seller.name}
+                                </Link>
+                            </td>
                             <td>{purchase.seller.identificationNumber}</td>
                             <td>{purchase.invoiceNumber}</td>
                             <td>{purchase.dueDate}</td>

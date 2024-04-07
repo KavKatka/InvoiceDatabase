@@ -21,7 +21,6 @@ export const InvoiceFilter =(props) => {
                     <InputSelect
                         name="buyerID"
                         items={props.buyerIDList}
-                        
                         handleChange={handleChange}
                         label="Odběratel"
                         prompt="nevybrán"
@@ -33,7 +32,6 @@ export const InvoiceFilter =(props) => {
                         name="sellerID"
                         items={props.sellerIDList}
                         handleChange={handleChange}
-                       
                         label="Dodavatel"
                         prompt="nevybrán"
                         value={filter.sellerID}
@@ -41,7 +39,6 @@ export const InvoiceFilter =(props) => {
                 </div>
                 <div className="col">
                     <InputField
-                        
                         type="text"
                         name="product"
                         min="3"
@@ -55,7 +52,6 @@ export const InvoiceFilter =(props) => {
             <div className="row">
             <div className="col">
                     <InputField
-                        
                         type="number"
                         name="minPrice"
                         min="0"
@@ -67,7 +63,6 @@ export const InvoiceFilter =(props) => {
                 </div>
                 <div className="col">
                     <InputField
-                        
                         type="number"
                         name="maxPrice"
                         min="0"
@@ -90,7 +85,6 @@ export const InvoiceFilter =(props) => {
                 </div>
             </div>
                 
-            
             <div className="row">
                 <div className="col">
                     <input  
@@ -101,9 +95,6 @@ export const InvoiceFilter =(props) => {
                 </div>
             </div>
         </form>
-            
-
-        
     )
 
 

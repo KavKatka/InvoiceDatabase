@@ -44,7 +44,7 @@ const PersonDetail = () => {
                 <div className="col-6">
                     <h1>Detail osoby</h1>
                     <hr/>
-                    <h2>{person.name} ({person.identificationNumber})</h2>
+                    <h2><strong>{person.name}</strong> ({person.identificationNumber})</h2>
                     <p>
                         <strong>DIČ:</strong>
                         <br/>
@@ -79,12 +79,10 @@ const PersonDetail = () => {
                 </div>
                 
                 <div className="col-6">
-                    
                     <br/>
                     <PurchasesTable />
                     <br/>
                     <SalesTable />
-                        
                 </div>
             </div>
         </>
