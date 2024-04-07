@@ -21,8 +21,7 @@ export const InvoiceFilter =(props) => {
                     <InputSelect
                         name="buyerID"
                         items={props.buyerIDList}
-                        required={true}
-                        multiple={false}
+                        
                         handleChange={handleChange}
                         label="Odběratel"
                         prompt="nevybrán"
@@ -34,8 +33,7 @@ export const InvoiceFilter =(props) => {
                         name="sellerID"
                         items={props.sellerIDList}
                         handleChange={handleChange}
-                        required={true}
-                        multiple={false}
+                       
                         label="Dodavatel"
                         prompt="nevybrán"
                         value={filter.sellerID}

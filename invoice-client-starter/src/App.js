@@ -92,10 +92,7 @@ export function App() {
             <Route path="create" element={<PersonForm />} />
             <Route path="edit/:id" element={<PersonForm />} />
           </Route>
-        </Routes>
-
-        <Routes>
-          <Route index element={<Navigate to={"/invoices"} />} />
+                
           <Route path="/invoices">
             <Route index element={<InvoiceIndex />} />
             <Route path="show/:id" element={<InvoiceDetail />} />

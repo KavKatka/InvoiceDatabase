@@ -5,7 +5,7 @@ import {apiDelete, apiGet} from "../utils/api";
 import InvoiceTable from "./InvoiceTable";
 import { InvoiceFilter } from "./InvoiceFilter";
 
-const InvoiceIndex = (props) => {
+const InvoiceIndex = () => {
     const [invoices, setInvoice] = useState([]);
     const [buyerIDList, setBuyerIDList] = useState([]);
     const [sellerIDList, setSellerIDList] = useState([]);
@@ -30,8 +30,8 @@ const InvoiceIndex = (props) => {
 
     useEffect(() => {
         apiGet("/api/invoices").then((data) => setInvoice(data));
-        apiGet("/api/persons").then((data) => setBuyerIDList(data));
-        apiGet("/api/persons").then((data) => setSellerIDList(data));
+        apiGet("/api/persons").then((data) => {setBuyerIDList(data);setSellerIDList(data);});
+        
     }, []);
 
     const handleChange = (e) => {
@@ -62,8 +62,8 @@ const InvoiceIndex = (props) => {
             <InvoiceFilter
                 handleChange={handleChange}
                 handleSubmit={handleSubmit}
-                buyerID={buyerIDList}
-                sellerID={sellerIDList}
+                buyerIDList={buyerIDList}
+                sellerIDList={sellerIDList}
                 filter={filterState}
                 confirm="Filtrovat"
             />

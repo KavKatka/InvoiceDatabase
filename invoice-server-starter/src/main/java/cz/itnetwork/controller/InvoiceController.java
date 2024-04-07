@@ -31,7 +31,7 @@ public class InvoiceController {
     }
 
     @GetMapping("/invoices")
-    public List<InvoiceDTO> getAllFiltered(InvoiceFilter invoiceFilter, @RequestParam int limit) {
+    public List<InvoiceDTO> getAllFiltered(InvoiceFilter invoiceFilter) {
         return invoiceService.getAllFiltered(invoiceFilter);
     }
 

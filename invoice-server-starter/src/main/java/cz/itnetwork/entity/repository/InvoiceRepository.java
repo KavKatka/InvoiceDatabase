@@ -35,8 +35,8 @@ public interface InvoiceRepository extends JpaRepository<InvoiceEntity, Long>, J
                  AND YEAR(thisYear.issued) = YEAR(CURRENT_DATE)""")
     InvoiceStatisticDTO getGeneralStatistic();
 
-    @Query( value = "SELECT * FROM invoice WHERE LIMIT :limit", nativeQuery = true)
-   List<InvoiceEntity> getAll(@Param("limit")int limit);
+   // @Query( value = "SELECT * FROM invoice WHERE LIMIT :limit", nativeQuery = true)
+   //List<InvoiceEntity> getAll(@Param("limit")int limit);
 
 
 

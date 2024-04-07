@@ -32,7 +32,7 @@ export function InputSelect(props) {
           </option>
         )}
 
-        {objectItems
+        {objectItems 
           ? /* vykreslení položek jako objektů z databáze (osobnosti) */
             props.items.map((item, index) => (
               <option key={required ? index : index + 1} value={item._id}>
