@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import { apiGet } from "../utils/api";
 
 
+
 export function GeneralStatistic(){
 
     const [statisticsState, setStatistics] = useState([]);
@@ -20,7 +21,7 @@ export function GeneralStatistic(){
                     <tr>
                         <th>Celkem všechny faktury</th>
                         <th>Počet faktur</th>
-                        <th>Celkem za rok 2024</th>
+                        <th>Celkem za rok </th>
                     </tr>
                 </thead>
                 <tbody>

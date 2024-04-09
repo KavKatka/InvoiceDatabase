@@ -1,4 +1,4 @@
-export const price = intl.NumberFormat('cs-CZ', {
+export const Price = intl.NumberFormat('cs-CZ', {
     style:'currency', 
     currency: 'CZK',
     

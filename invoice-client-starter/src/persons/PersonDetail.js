@@ -25,17 +25,22 @@ import {Form, useParams} from "react-router-dom";
 
 import {apiGet} from "../utils/api";
 import Country from "./Country";
-import { PurchasesTable} from "./PurchasesTable"
-import { SalesTable } from "./SalesTable";
+import InvoiceTable from "../invoices/InvoiceTable";
 
 const PersonDetail = () => {
     const {id} = useParams();
     const [person, setPerson] = useState({});
+    const [sales, setSales] = useState([]); 
+    const [purchases, setPurchases] = useState([]);
 
     useEffect(() => {
-        apiGet("/api/persons/" + id).then((data) => setPerson(data));
+        apiGet("/api/persons/" + id).then((data) => {setPerson(data); 
+            apiGet("/api/identification/" + data.identificationNumber +"/sales").then((data) => setSales(data));
+            apiGet("/api/identification/" + data.identificationNumber +"/purchases").then((data) => setPurchases(data));
+        
+        });
 
-    }, []);
+    }, [id]);
     const country = Country.CZECHIA === person.country ? "Česká republika" : "Slovensko";
 
     return (
@@ -80,9 +85,19 @@ const PersonDetail = () => {
                 
                 <div className="col-6">
                     <br/>
-                    <PurchasesTable />
+                    <InvoiceTable
+                        label="Přijaté faktury: "
+                        items={purchases}
+                        
+                        
+                        
+                    />
                     <br/>
-                    <SalesTable />
+                    <InvoiceTable
+                        label="Vydané faktury: "
+                        items={sales}
+                        
+                    />                   
                 </div>
             </div>
         </>

@@ -39,8 +39,6 @@ import InvoiceDetail from "./invoices/InvoiceDetail"
 import InvoiceForm from "./invoices/InvoiceForm"
 import {IndividualStatistic} from "./statistics/PersonStatistic"
 import { GeneralStatistic } from "./statistics/InvoiceStatistic";
-import { PurchasesTable } from "./persons/PurchasesTable";
-import { SalesTable } from "./persons/SalesTable";
 
 export function App() {
   return (
@@ -73,17 +71,7 @@ export function App() {
               </ul>
             </nav>
 
-        <Routes>
-          <Route index element={<Navigate to={"/invoices/statistics"} />} />
-          <Route path="/invoices/statistics" element={<GeneralStatistic/>}>
-          </Route>
-        </Routes>
-        <Routes>
-          <Route index element={<Navigate to={"/persons/statistics"} />} />
-          <Route path="/persons/statistics" element={<IndividualStatistic/>}>
-          </Route>
-        </Routes>
-
+       
         <Routes>
           <Route index element={<Navigate to={"/persons"} />} />
           <Route path="/persons">
@@ -91,6 +79,7 @@ export function App() {
             <Route path="show/:id" element={<PersonDetail />} />
             <Route path="create" element={<PersonForm />} />
             <Route path="edit/:id" element={<PersonForm />} />
+            <Route path="statistics" element={<IndividualStatistic/>}/>
           </Route>
                 
           <Route path="/invoices">
@@ -98,6 +87,7 @@ export function App() {
             <Route path="show/:id" element={<InvoiceDetail />} />
             <Route path="create" element={<InvoiceForm />} />
             <Route path="edit/:id" element={<InvoiceForm />} />
+            <Route path="statistics" element={<GeneralStatistic/>}></Route>
           </Route>
         </Routes>
         
