@@ -22,7 +22,6 @@
 package cz.itnetwork.entity;
 
 import cz.itnetwork.constant.Countries;
-import cz.itnetwork.dto.InvoiceDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.Getter;

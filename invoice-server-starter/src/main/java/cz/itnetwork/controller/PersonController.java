@@ -23,7 +23,6 @@ package cz.itnetwork.controller;
 
 import cz.itnetwork.dto.PersonDTO;
 import cz.itnetwork.dto.PersonStatisticDTO;
-import cz.itnetwork.entity.repository.PersonRepository;
 import cz.itnetwork.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

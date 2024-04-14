@@ -7,7 +7,6 @@ import cz.itnetwork.entity.PersonEntity_;
 import cz.itnetwork.entity.filter.InvoiceFilter;
 import jakarta.persistence.criteria.*;
 import lombok.RequiredArgsConstructor;
-import org.aspectj.weaver.ast.Expr;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.util.ArrayList;

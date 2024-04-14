@@ -2,12 +2,9 @@ package cz.itnetwork.controller;
 
 import cz.itnetwork.dto.InvoiceDTO;
 import cz.itnetwork.dto.InvoiceStatisticDTO;
-import cz.itnetwork.entity.InvoiceEntity;
 import cz.itnetwork.entity.filter.InvoiceFilter;
-import cz.itnetwork.entity.repository.InvoiceRepository;
 import cz.itnetwork.service.InvoiceService;
 import cz.itnetwork.service.PersonService;
-import org.hibernate.stat.Statistics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

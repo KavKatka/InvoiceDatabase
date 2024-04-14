@@ -1,13 +1,11 @@
 package cz.itnetwork.entity.repository;
 
-import cz.itnetwork.dto.InvoiceDTO;
+
 import cz.itnetwork.dto.InvoiceStatisticDTO;
 import cz.itnetwork.entity.InvoiceEntity;
-import cz.itnetwork.entity.filter.InvoiceFilter;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 

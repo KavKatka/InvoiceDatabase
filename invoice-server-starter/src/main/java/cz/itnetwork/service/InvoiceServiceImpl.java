@@ -14,9 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
-
-import javax.swing.text.html.parser.Entity;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
