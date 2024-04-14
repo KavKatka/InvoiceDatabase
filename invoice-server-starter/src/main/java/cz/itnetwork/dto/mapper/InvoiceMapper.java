@@ -35,8 +35,4 @@ public interface InvoiceMapper {
     void updatedEntity(InvoiceDTO source, @MappingTarget InvoiceEntity target);
 
 
-
-
-
-
 }

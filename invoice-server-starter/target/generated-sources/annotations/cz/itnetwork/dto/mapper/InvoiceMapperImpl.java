@@ -122,9 +122,7 @@ public class InvoiceMapperImpl implements InvoiceMapper {
 
         PersonEntity personEntity = new PersonEntity();
 
-        if ( personDTO.getId() != null ) {
-            personEntity.setId( personDTO.getId() );
-        }
+        personEntity.setId( personDTO.getId() );
         personEntity.setName( personDTO.getName() );
         personEntity.setIdentificationNumber( personDTO.getIdentificationNumber() );
         personEntity.setTaxNumber( personDTO.getTaxNumber() );

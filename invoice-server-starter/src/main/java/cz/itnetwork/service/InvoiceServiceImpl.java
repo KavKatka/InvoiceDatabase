@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,13 +41,6 @@ public class InvoiceServiceImpl implements InvoiceService {
     @Autowired
     private PersonRepository personRepository;
 
-
-
-    /**
-     * Method to create new invoice
-     * @param invoiceDTO specific data to create new invoice
-     * @return new invoice
-     */
     @Override
     public InvoiceDTO addInvoice(InvoiceDTO invoiceDTO) {
         InvoiceEntity invoice = invoiceMapper.toEntity(invoiceDTO);
@@ -60,14 +54,8 @@ public class InvoiceServiceImpl implements InvoiceService {
         return invoiceMapper.toDTO(invoice);
     }
 
-    /**
-     * Method to edit existing invoice
-     * @param invoiceDTO data for editing
-     * @param id search by id
-     * @return edited invoice with same id
-     */
     @Override
-    public InvoiceDTO editInvoice(InvoiceDTO invoiceDTO, long id) {
+    public InvoiceDTO editInvoice(InvoiceDTO invoiceDTO, Long id) {
         fetchInvoiceById(id);
         InvoiceEntity invoice = invoiceMapper.toEntity(invoiceDTO);
         invoiceMapper.updatedEntity(invoiceDTO, invoice);
@@ -77,26 +65,18 @@ public class InvoiceServiceImpl implements InvoiceService {
         return invoiceMapper.toDTO(updatedInvoice);
     }
 
-    /**
-     * Method to get all invoices with filters
-     */
     @Override
     public List<InvoiceDTO> getAllFiltered(InvoiceFilter invoiceFilter) {
         InvoiceSpecification invoiceSpecification = new InvoiceSpecification(invoiceFilter);
 
-        return invoiceRepository.findAll(invoiceSpecification, PageRequest.of(0,invoiceFilter.getLimit()))
+        return invoiceRepository.findAll(invoiceSpecification, PageRequest.of(0, invoiceFilter.getLimit()))
                 .stream()
                 .map(invoiceMapper::toDTO)
                 .collect(Collectors.toList());
     }
 
-
-    /**
-     * Method to delete invoice
-     * @param id search by id to delete invoice
-     */
     @Override
-    public InvoiceDTO removeInvoice(long id) {
+    public InvoiceDTO removeInvoice(Long id) {
         InvoiceEntity invoice = fetchInvoiceById(id);
 
         invoiceRepository.delete(invoice);
@@ -104,41 +84,36 @@ public class InvoiceServiceImpl implements InvoiceService {
         return invoiceMapper.toDTO(invoice);
     }
 
-    /**
-     * Get detail of specific invoice by id
-     * @param id search invoice
-     * @return detail of invoice
-     */
     @Override
-    public InvoiceDTO getDetail(long id) {
+    public InvoiceDTO getDetail(Long id) {
         InvoiceEntity invoice = fetchInvoiceById(id);
 
         return invoiceMapper.toDTO(invoice);
     }
 
-    /**
-     * Get general statistic per year
-     */
     @Override
-    public InvoiceStatisticDTO getGeneralStatistic(){
+    public InvoiceStatisticDTO getGeneralStatistic() {
         return invoiceRepository.getGeneralStatistic();
     }
 
     /**
      * Find invoice by id
+     *
      * @param id search by id
      * @return invoice by id or throw NotFoundException
      */
-    private InvoiceEntity fetchInvoiceById(long id) {
+    private InvoiceEntity fetchInvoiceById(Long id) {
         return invoiceRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Invoice with id " + id + " wasn't found in the database."));
     }
+
     /**
      * Find person by id
+     *
      * @param id search by id
      * @return person by id or throw NotFoundException
      */
-    private PersonEntity fetchPersonById(long id) {
+    private PersonEntity fetchPersonById(Long id) {
         return personRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Person with id " + id + " wasn't found in the database."));
     }

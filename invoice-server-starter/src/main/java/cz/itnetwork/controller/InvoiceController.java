@@ -38,7 +38,7 @@ public class InvoiceController {
     }
 
     @GetMapping("/identification/{identificationNumber}/sales")
-    public List<InvoiceDTO>getSales(@PathVariable String identificationNumber) {
+    public List<InvoiceDTO> getSales(@PathVariable String identificationNumber) {
         return personService.getSales(identificationNumber);
     }
 
@@ -48,7 +48,7 @@ public class InvoiceController {
     }
 
     @PutMapping("/invoices/{id}")
-    public InvoiceDTO editInvoice(@RequestBody InvoiceDTO invoiceDTO,@PathVariable long id) {
+    public InvoiceDTO editInvoice(@RequestBody InvoiceDTO invoiceDTO, @PathVariable long id) {
         return invoiceService.editInvoice(invoiceDTO, id);
     }
 
@@ -59,7 +59,7 @@ public class InvoiceController {
     }
 
     @GetMapping("/invoices/statistics")
-    public InvoiceStatisticDTO getGeneralStatistic(){
+    public InvoiceStatisticDTO getGeneralStatistic() {
         return invoiceService.getGeneralStatistic();
     }
 

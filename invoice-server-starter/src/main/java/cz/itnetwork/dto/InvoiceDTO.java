@@ -17,7 +17,7 @@ import java.util.Date;
 public class InvoiceDTO {
 
     @JsonProperty("_id")
-    private long id;
+    private Long id;
 
     private int invoiceNumber;
 
@@ -38,8 +38,6 @@ public class InvoiceDTO {
     private int vat;
 
     private String note;
-
-
 
 
 }

@@ -87,16 +87,13 @@ const PersonDetail = () => {
                     <br/>
                     <InvoiceTable
                         label="Přijaté faktury: "
-                        items={purchases}
-                        
-                        
+                        items={purchases} 
                         
                     />
                     <br/>
                     <InvoiceTable
                         label="Vydané faktury: "
                         items={sales}
-                        
                     />                   
                 </div>
             </div>

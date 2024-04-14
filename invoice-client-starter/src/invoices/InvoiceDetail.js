@@ -26,7 +26,6 @@ const InvoiceDetail = () => {
                     </Link>
                     <br/>
                     IČO:  {invoice.seller?.identificationNumber}
-                  
                 </p>
                 <p>
                     <strong>Odběratel</strong>

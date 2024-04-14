@@ -65,5 +65,4 @@ public class PersonDTO {
     private String note;
 
 
-
 }

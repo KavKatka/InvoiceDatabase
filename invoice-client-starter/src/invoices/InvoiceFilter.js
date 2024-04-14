@@ -96,8 +96,4 @@ export const InvoiceFilter =(props) => {
             </div>
         </form>
     )
-
-
-
-
 } 

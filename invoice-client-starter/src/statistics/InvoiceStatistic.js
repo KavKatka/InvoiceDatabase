@@ -10,8 +10,7 @@ export function GeneralStatistic(){
     useEffect(() => {
         apiGet("/api/invoices/statistics").then((data) => setStatistics(data));
     },[]); 
-
-
+    
     return(
         <>
             <h1>Obecné statistiky</h1>
@@ -30,7 +29,6 @@ export function GeneralStatistic(){
                         <td>{statisticsState.invoicesCount}</td>
                         <td>{statisticsState.currentYearSum} </td>
                     </tr>
-                    
                 </tbody>
             </table>
         </>

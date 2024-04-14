@@ -59,10 +59,6 @@ public class PersonServiceImpl implements PersonService {
     @Autowired
     private InvoiceRepository invoiceRepository;
 
-    /**
-     * Method to add person to database in DTO format
-     * @param personDTO Person to create
-     */
     public PersonDTO addPerson(PersonDTO personDTO) {
         PersonEntity entity = personMapper.toEntity(personDTO);
         PersonEntity newEntity = personRepository.save(entity);
@@ -70,14 +66,8 @@ public class PersonServiceImpl implements PersonService {
         return personMapper.toDTO(newEntity);
     }
 
-    /**
-     * Method to edit existing person and original information set hidden
-     * @param personDTO person to edit
-     * @param id find person to edit by id
-     * @return new edited person
-     */
     @Override
-    public PersonDTO editPerson(PersonDTO personDTO, long id) {
+    public PersonDTO editPerson(PersonDTO personDTO, Long id) {
 
         PersonEntity person = fetchPersonById(id);
 
@@ -85,65 +75,41 @@ public class PersonServiceImpl implements PersonService {
         personRepository.save(person);
 
         PersonEntity newPerson = personMapper.toEntity(personDTO);
+        newPerson.setId(null);
         personRepository.save(newPerson);
 
         return personMapper.toDTO(newPerson);
     }
 
-    /**
-     * Method to get detail information for specific person by id
-     * @param id search person by id
-     * @return details of person
-     */
     @Override
-    public PersonDTO getDetail(long id) {
+    public PersonDTO getDetail(Long id) {
 
         PersonEntity person = fetchPersonById(id);
 
         return personMapper.toDTO(person);
     }
 
-    /**
-     * Method to get List of sales by identification number of person
-     * @param identificationNumber identification number of specific person
-     * @return all sales by specific person
-     */
+
     @Override
     public List<InvoiceDTO> getSales(String identificationNumber) {
 
         return invoiceMapper.toDTOs(invoiceRepository.findByBuyer_IdentificationNumber(identificationNumber));
     }
 
-    /**
-     * Method to get List of purchases by identification number of specific person
-     * @param identificationNumber identification number of specific person
-     * @return all purchases by specific person
-     */
     @Override
     public List<InvoiceDTO> getPurchases(String identificationNumber) {
 
         return invoiceMapper.toDTOs(invoiceRepository.findBySeller_IdentificationNumber(identificationNumber));
     }
 
-    /**
-     * Method to delete person by id
-     * @param personId Person to delete
-     */
     @Override
-    public void removePerson(long personId) {
-        try {
+    public void removePerson(Long personId) {
             PersonEntity person = fetchPersonById(personId);
             person.setHidden(true);
 
             personRepository.save(person);
-        } catch (NotFoundException ignored) {
-            // The contract in the interface states, that no exception is thrown, if the entity is not found.
-        }
     }
 
-    /**
-     * Method to get all persons in database
-     */
     @Override
     public List<PersonDTO> getAll() {
         return personRepository.findByHidden(false)
@@ -152,11 +118,8 @@ public class PersonServiceImpl implements PersonService {
                 .collect(Collectors.toList());
     }
 
-    /**
-     * Method to get List of statistic by specific person
-     */
     @Override
-    public List<PersonStatisticDTO> getIndividualStatistic(){
+    public List<PersonStatisticDTO> getIndividualStatistic() {
         return personRepository.getIndividualStatistic();
     }
 
@@ -171,7 +134,7 @@ public class PersonServiceImpl implements PersonService {
      * @return Fetched entity
      * @throws org.webjars.NotFoundException In case a person with the passed [id] isn't found
      */
-    private PersonEntity fetchPersonById(long id) {
+    private PersonEntity fetchPersonById(Long id) {
         return personRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Person with id " + id + " wasn't found in the database."));
     }

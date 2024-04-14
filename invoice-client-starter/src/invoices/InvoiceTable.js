@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 
 
 const InvoiceTable = ({label, items, deleteInvoice}) => {
+    
     return (
         <div>
             <p>
@@ -31,12 +32,10 @@ const InvoiceTable = ({label, items, deleteInvoice}) => {
                             {item.buyer.name}
                             </Link>
                         </td>
-                        
                         <td>
                             <Link to={"/persons/show/" + item.seller._id}>
                                 {item.seller.name}
                             </Link>
-                            
                         </td>
                         <td>{item.invoiceNumber}</td>
                         <td>{item.product}</td>

@@ -39,7 +39,7 @@ public class PersonController {
 
     @PostMapping("/persons")
     public PersonDTO addPerson(@RequestBody PersonDTO personDTO) {
-        return  personService.addPerson(personDTO);
+        return personService.addPerson(personDTO);
     }
 
     @GetMapping("/persons")
@@ -48,12 +48,12 @@ public class PersonController {
     }
 
     @GetMapping("/persons/{id}")
-    public PersonDTO getDetail(@PathVariable long id){
+    public PersonDTO getDetail(@PathVariable Long id) {
         return personService.getDetail(id);
     }
 
     @PutMapping("/persons/{id}")
-    public PersonDTO editPerson(@RequestBody PersonDTO personDTO, @PathVariable long id){
+    public PersonDTO editPerson(@RequestBody PersonDTO personDTO, @PathVariable Long id) {
         return personService.editPerson(personDTO, id);
     }
 
@@ -64,7 +64,7 @@ public class PersonController {
     }
 
     @GetMapping("/persons/statistics")
-    public List<PersonStatisticDTO> getIndividualStatistic(){
+    public List<PersonStatisticDTO> getIndividualStatistic() {
         return personService.getIndividualStatistic();
     }
 }

@@ -51,13 +51,11 @@ export function App() {
                     Osoby
                   </Link>
                 </li>
-              
                 <li className="nav-item">
                   <Link to={"/invoices"} className="nav-link">
                     Faktury
                   </Link>
                 </li>
-             
                 <li className="nav-item">
                   <Link to={"/invoices/statistics"} className="nav-link">
                     Statistiky - faktury
@@ -71,7 +69,6 @@ export function App() {
               </ul>
             </nav>
 
-       
         <Routes>
           <Route index element={<Navigate to={"/persons"} />} />
           <Route path="/persons">

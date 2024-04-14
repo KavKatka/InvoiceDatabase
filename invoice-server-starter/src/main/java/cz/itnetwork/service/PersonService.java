@@ -18,18 +18,20 @@ public interface PersonService {
 
     /**
      * Edit existing person
+     *
      * @param personDTO information of person
-     * @param id edited person get new id
+     * @param id        edited person get new id
      * @return new edited person
      */
-    PersonDTO editPerson(PersonDTO personDTO, long id);
+    PersonDTO editPerson(PersonDTO personDTO, Long id);
 
     /**
      * Get detail by specific person
+     *
      * @param id search person by id
      * @return detail information of person
      */
-    PersonDTO getDetail(long id);
+    PersonDTO getDetail(Long id);
 
     /**
      * <p>Sets hidden flag to true for the person with the matching [id]</p>
@@ -37,7 +39,7 @@ public interface PersonService {
      *
      * @param id Person to delete
      */
-    void removePerson(long id);
+    void removePerson(Long id);
 
     /**
      * Fetches all non-hidden persons
@@ -48,14 +50,17 @@ public interface PersonService {
 
     /**
      * Get all purchases
+     *
      * @param identificationNumber search purchases by specific identification number
-     * @return  List of all purchases by specific person
+     * @return List of all purchases by specific person
      */
     List<InvoiceDTO> getPurchases(String identificationNumber);
+
     /**
      * Get all sales
+     *
      * @param identificationNumber search sales by specific identification number
-     * @return  List of all sales by specific person
+     * @return List of all sales by specific person
      */
     List<InvoiceDTO> getSales(String identificationNumber);
 

@@ -39,7 +39,7 @@ public interface PersonRepository extends JpaRepository<PersonEntity, Long> {
      */
     @Query(value = """
             SELECT new cz.itnetwork.dto.PersonStatisticDTO
-                (person.id AS personId, person.name AS personName, SUM(i.price) AS revenue)
+            (person.id AS personId, person.name AS personName, SUM(i.price) AS revenue)
             FROM person AS person
             LEFT JOIN invoice AS i
             ON person.id = i.seller

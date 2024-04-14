@@ -10,6 +10,7 @@ import java.util.List;
 public interface InvoiceService {
     /**
      * Create new invoice
+     *
      * @param invoiceDTO specific data
      * @return new invoice
      */
@@ -17,39 +18,36 @@ public interface InvoiceService {
 
     /**
      * Edit existing invoice
+     *
      * @param invoiceDTO data to edit
-     * @param id search by id
+     * @param id         search by id
      * @return edited invoice with same id
      */
-    InvoiceDTO editInvoice(InvoiceDTO invoiceDTO, long id);
+    InvoiceDTO editInvoice(InvoiceDTO invoiceDTO, Long id);
 
     /**
      * Remove invoice
+     *
      * @param id search by id
      */
-    InvoiceDTO removeInvoice(long id);
+    InvoiceDTO removeInvoice(Long id);
 
     /**
      * Get detail of invoice
+     *
      * @param id search by id
      */
-    InvoiceDTO getDetail(long id);
+    InvoiceDTO getDetail(Long id);
 
     /**
-     * Get all invoices in database
+     * Get all invoices in database with filters
      */
     List<InvoiceDTO> getAllFiltered(InvoiceFilter invoiceFilter);
-
-   // List <InvoiceDTO> getAll();
-
 
     /**
      * Get general statistic per year
      */
     InvoiceStatisticDTO getGeneralStatistic();
-
-
-
 
 
 }

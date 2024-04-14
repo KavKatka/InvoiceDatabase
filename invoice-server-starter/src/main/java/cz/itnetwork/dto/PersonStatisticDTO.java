@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PersonStatisticDTO {
 
-    private long personId;
+    private Long personId;
 
     private String personName;
 

@@ -20,9 +20,7 @@ public class PersonMapperImpl implements PersonMapper {
 
         PersonEntity personEntity = new PersonEntity();
 
-        if ( source.getId() != null ) {
-            personEntity.setId( source.getId() );
-        }
+        personEntity.setId( source.getId() );
         personEntity.setName( source.getName() );
         personEntity.setIdentificationNumber( source.getIdentificationNumber() );
         personEntity.setTaxNumber( source.getTaxNumber() );

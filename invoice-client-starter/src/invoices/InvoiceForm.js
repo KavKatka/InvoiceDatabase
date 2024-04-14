@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
-
 import {apiGet, apiPost, apiPut} from "../utils/api";
 
 import InputField from "../components/InputField";
@@ -38,11 +37,8 @@ const InvoiceForm = () => {
         if (id) {
             apiGet("/api/invoices/" + id).then((data) => setInvoice(data));
         }
-        apiGet("/api/persons").then((data) => setBuyerList(data));
-        apiGet("/api/persons").then((data) => setSellerList(data));
+        apiGet("/api/persons").then((data) => {setBuyerList(data), setSellerList(data)});
     }, [id]);
-
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -71,7 +67,7 @@ const InvoiceForm = () => {
             {errorState ? (
                 <div className="alert alert-danger">{errorState}</div>
             ) : null}
-            {sent && (
+            {sent &&  (
                 <FlashMessage
                     theme={success ? "success" : ""}
                     text={success ? "Uložení faktury proběhlo úspěšně." : ""}
@@ -118,36 +114,7 @@ const InvoiceForm = () => {
                         setInvoice({...invoice, buyer:{_id: e.target.value}})
                     }}
                 />
-                
-                {/* 
-                Původní inputField - změna na Select
-
-                <InputField
-                    required={true}
-                    type="text"
-                    name="seller"
-                    min="1"
-                    label="Dodavatel"
-                    prompt="Zadejte ID Dodavatele"
-                    value={invoice.seller._id}
-                    handleChange={(e) => {
-                        setInvoice({...invoice, seller:{_id: e.target.value}});
-                    }}
-                />
-               
-                <InputField
-                    required={true}
-                    type="text"
-                    name="buyer"
-                    min="1"
-                    label="Odběratel"
-                    prompt="Zadejte ID Odběratele"
-                    value={invoice.buyer._id}
-                    handleChange={(e) => {
-                        setInvoice({...invoice, buyer:{_id: e.target.value}});
-                    }}
-                /> */}
-               
+                               
                 <InputField
                     required={true}
                     type="date"
