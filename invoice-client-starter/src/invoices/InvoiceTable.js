@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 
 
-const InvoiceTable = ({label, items, deleteInvoice}) => {
+const InvoiceTable = ({label, items, deleteInvoice, showActionSection}) => {
     
     return (
         <div>
@@ -20,7 +20,7 @@ const InvoiceTable = ({label, items, deleteInvoice}) => {
                     <th>Číslo faktury</th>
                     <th>Produkt</th>
                     <th>Cena</th>
-                    <th colSpan={3}>Akce</th>
+                    {showActionSection ? <th colSpan={3}>Akce</th> : null}
                 </tr>
                 </thead>
                 <tbody>
@@ -40,6 +40,7 @@ const InvoiceTable = ({label, items, deleteInvoice}) => {
                         <td>{item.invoiceNumber}</td>
                         <td>{item.product}</td>
                         <td>{item.price} Kč</td>
+                        {showActionSection ? 
                         <td>
                             <div className="btn-group">
                                 <Link
@@ -61,7 +62,7 @@ const InvoiceTable = ({label, items, deleteInvoice}) => {
                                     Odstranit
                                 </button>
                             </div>
-                        </td>
+                        </td> : null}
                     </tr>
                 ))}
                 </tbody>

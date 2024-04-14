@@ -72,6 +72,7 @@ const InvoiceIndex = () => {
                 deleteInvoice={deleteInvoice}
                 items={invoices}
                 label="Počet faktur:"
+                showActionSection
             />
         </div>
     );

@@ -88,7 +88,7 @@ const PersonDetail = () => {
                     <InvoiceTable
                         label="Přijaté faktury: "
                         items={purchases} 
-                        
+                        showActionSection={false}
                     />
                     <br/>
                     <InvoiceTable

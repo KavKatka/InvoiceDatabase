@@ -41,7 +41,7 @@ export const InvoiceFilter =(props) => {
                     <InputField
                         type="text"
                         name="product"
-                        min="3"
+                        min="1"
                         handleChange={handleChange}
                         label="Produkt"
                         prompt="Zadejte vyhledávaný produkt"
