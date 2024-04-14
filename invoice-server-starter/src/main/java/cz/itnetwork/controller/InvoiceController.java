@@ -43,7 +43,7 @@ public class InvoiceController {
     }
 
     @GetMapping("/invoices/{id}")
-    public InvoiceDTO getDetail(@PathVariable long id) {
+    public InvoiceDTO getDetail(@PathVariable Long id) {
         return invoiceService.getDetail(id);
     }
 
@@ -54,7 +54,7 @@ public class InvoiceController {
 
     @DeleteMapping("/invoices/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public InvoiceDTO removeInvoice(@PathVariable long id) {
+    public InvoiceDTO removeInvoice(@PathVariable Long id) {
         return invoiceService.removeInvoice(id);
     }
 

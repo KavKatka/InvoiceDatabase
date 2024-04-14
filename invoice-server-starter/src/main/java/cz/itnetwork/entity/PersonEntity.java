@@ -120,5 +120,4 @@ public class PersonEntity {
      */
     @OneToMany(mappedBy = "seller")
     private List<InvoiceEntity> sales;
-
 }

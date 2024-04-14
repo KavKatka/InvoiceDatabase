@@ -19,8 +19,8 @@ const InvoiceForm = () => {
         buyer: {
             _id: ""
         },
-        issued: Date,
-        dueDate: Date,
+        issued: "",
+        dueDate: "",
         product: "",
         price: "",
         vat: "",
