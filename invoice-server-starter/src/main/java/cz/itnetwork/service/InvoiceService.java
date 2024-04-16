@@ -10,7 +10,6 @@ import java.util.List;
 public interface InvoiceService {
     /**
      * Create new invoice
-     *
      * @param invoiceDTO specific data
      * @return new invoice
      */
@@ -18,7 +17,6 @@ public interface InvoiceService {
 
     /**
      * Edit existing invoice
-     *
      * @param invoiceDTO data to edit
      * @param id         search by id
      * @return edited invoice with same id
@@ -27,14 +25,12 @@ public interface InvoiceService {
 
     /**
      * Remove invoice
-     *
      * @param id search by id
      */
     InvoiceDTO removeInvoice(Long id);
 
     /**
      * Get detail of invoice
-     *
      * @param id search by id
      */
     InvoiceDTO getDetail(Long id);

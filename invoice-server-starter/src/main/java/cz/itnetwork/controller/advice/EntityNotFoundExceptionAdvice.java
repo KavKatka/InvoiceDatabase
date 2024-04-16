@@ -14,5 +14,4 @@ public class EntityNotFoundExceptionAdvice {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public void handleEntityNotFoundException() {
     }
-
 }

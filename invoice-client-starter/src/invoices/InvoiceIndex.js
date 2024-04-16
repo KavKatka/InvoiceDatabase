@@ -57,8 +57,7 @@ const InvoiceIndex = () => {
     return (
         <div>
             <h1>Seznam Faktur</h1>
-            <hr/>
-           
+            <hr/>  
             <InvoiceFilter
                 handleChange={handleChange}
                 handleSubmit={handleSubmit}

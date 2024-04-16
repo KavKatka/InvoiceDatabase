@@ -6,7 +6,6 @@ import InputField from "../components/InputField";
 import FlashMessage from "../components/FlashMessage";
 import InputSelect from "../components/InputSelect";
 
-
 const InvoiceForm = () => {
     const navigate = useNavigate();
     const {id} = useParams();
@@ -86,7 +85,6 @@ const InvoiceForm = () => {
                         setInvoice({...invoice, invoiceNumber: e.target.value});
                     }}
                 />
-
                 <InputSelect 
                     items={sellerList}
                     required={true}
@@ -100,7 +98,6 @@ const InvoiceForm = () => {
                         setInvoice({...invoice, seller:{_id: e.target.value}})
                     }}
                 />
-                
                 <InputSelect 
                     items={buyerList}
                     required={true}
@@ -113,8 +110,7 @@ const InvoiceForm = () => {
                     handleChange={(e) => {
                         setInvoice({...invoice, buyer:{_id: e.target.value}})
                     }}
-                />
-                               
+                />            
                 <InputField
                     required={true}
                     type="date"
@@ -127,7 +123,6 @@ const InvoiceForm = () => {
                         setInvoice({...invoice, issued: e.target.value});
                     }}
                 />
-
                 <InputField
                     required={true}
                     type="date"
@@ -140,7 +135,6 @@ const InvoiceForm = () => {
                         setInvoice({...invoice, dueDate: e.target.value});
                     }}
                 />
-
                 <InputField
                     required={true}
                     type="text"
@@ -153,7 +147,6 @@ const InvoiceForm = () => {
                         setInvoice({...invoice, product: e.target.value});
                     }}
                 />
-
                 <InputField
                     required={true}
                     type="text"
@@ -166,7 +159,6 @@ const InvoiceForm = () => {
                         setInvoice({...invoice, price: e.target.value});
                     }}
                 />
-
                 <InputField
                     required={true}
                     type="text"
@@ -179,7 +171,6 @@ const InvoiceForm = () => {
                         setInvoice({...invoice, vat: e.target.value});
                     }}
                 />
-
                 <InputField
                     required={true}
                     type="text"

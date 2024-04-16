@@ -105,7 +105,6 @@ const PersonForm = () => {
                         setPerson({...person, name: e.target.value});
                     }}
                 />
-
                 <InputField
                     required={true}
                     type="text"
@@ -118,7 +117,6 @@ const PersonForm = () => {
                         setPerson({...person, identificationNumber: e.target.value});
                     }}
                 />
-
                 <InputField
                     required={true}
                     type="text"
@@ -131,7 +129,6 @@ const PersonForm = () => {
                         setPerson({...person, taxNumber: e.target.value});
                     }}
                 />
-
                 <InputField
                     required={true}
                     type="text"
@@ -144,7 +141,6 @@ const PersonForm = () => {
                         setPerson({...person, accountNumber: e.target.value});
                     }}
                 />
-
                 <InputField
                     required={true}
                     type="text"
@@ -157,7 +153,6 @@ const PersonForm = () => {
                         setPerson({...person, bankCode: e.target.value});
                     }}
                 />
-
                 <InputField
                     required={true}
                     type="text"
@@ -170,7 +165,6 @@ const PersonForm = () => {
                         setPerson({...person, iban: e.target.value});
                     }}
                 />
-
                 <InputField
                     required={true}
                     type="text"
@@ -183,7 +177,6 @@ const PersonForm = () => {
                         setPerson({...person, telephone: e.target.value});
                     }}
                 />
-
                 <InputField
                     required={true}
                     type="text"
@@ -196,7 +189,6 @@ const PersonForm = () => {
                         setPerson({...person, mail: e.target.value});
                     }}
                 />
-
                 <InputField
                     required={true}
                     type="text"
@@ -209,7 +201,6 @@ const PersonForm = () => {
                         setPerson({...person, street: e.target.value});
                     }}
                 />
-
                 <InputField
                     required={true}
                     type="text"
@@ -222,7 +213,6 @@ const PersonForm = () => {
                         setPerson({...person, zip: e.target.value});
                     }}
                 />
-
                 <InputField
                     required={true}
                     type="text"
@@ -235,7 +225,6 @@ const PersonForm = () => {
                         setPerson({...person, city: e.target.value});
                     }}
                 />
-
                 <InputField
                     required={true}
                     type="text"
@@ -246,9 +235,7 @@ const PersonForm = () => {
                         setPerson({...person, note: e.target.value});
                     }}
                 />
-
                 <h6>Země:</h6>
-
                 <InputCheck
                     type="radio"
                     name="country"
@@ -259,7 +246,6 @@ const PersonForm = () => {
                     }}
                     checked={Country.CZECHIA === person.country}
                 />
-
                 <InputCheck
                     type="radio"
                     name="country"
@@ -270,7 +256,6 @@ const PersonForm = () => {
                     }}
                     checked={Country.SLOVAKIA === person.country}
                 />
-
                 <input type="submit" className="btn btn-primary" value="Uložit"/>
             </form>
         </div>

@@ -1,8 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-
-
 const InvoiceTable = ({label, items, deleteInvoice, showActionSection}) => {
     
     return (
@@ -10,7 +8,6 @@ const InvoiceTable = ({label, items, deleteInvoice, showActionSection}) => {
             <p>
                 {label} {items.length}
             </p>
-
             <table className="table table-bordered">
                 <thead>
                 <tr>
@@ -29,7 +26,7 @@ const InvoiceTable = ({label, items, deleteInvoice, showActionSection}) => {
                         <td>{index + 1}</td>
                         <td>
                             <Link to={"/persons/show/" + item.buyer._id}>
-                            {item.buyer.name}
+                                {item.buyer.name}
                             </Link>
                         </td>
                         <td>
@@ -67,9 +64,9 @@ const InvoiceTable = ({label, items, deleteInvoice, showActionSection}) => {
                 ))}
                 </tbody>
             </table>
-            <Link to={"/invoices/create"} className="btn btn-success">
-                Nová faktura
-            </Link>
+                <Link to={"/invoices/create"} className="btn btn-success">
+                    Nová faktura
+                </Link>
         </div>
     );
 };

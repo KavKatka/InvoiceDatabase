@@ -34,7 +34,6 @@ export function IndividualStatistic() {
                             <td>{statistic.revenue}</td>
                         </tr> 
                     ))}
-                    
                 </tbody>
             </table>
         </>

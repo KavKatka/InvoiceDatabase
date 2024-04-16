@@ -10,7 +10,6 @@ public interface PersonService {
 
     /**
      * Creates a new person
-     *
      * @param personDTO Person to create
      * @return newly created person
      */
@@ -18,7 +17,6 @@ public interface PersonService {
 
     /**
      * Edit existing person
-     *
      * @param personDTO information of person
      * @param id        edited person get new id
      * @return new edited person
@@ -27,7 +25,6 @@ public interface PersonService {
 
     /**
      * Get detail by specific person
-     *
      * @param id search person by id
      * @return detail information of person
      */
@@ -36,21 +33,18 @@ public interface PersonService {
     /**
      * <p>Sets hidden flag to true for the person with the matching [id]</p>
      * <p>In case a person with the passed [id] isn't found, the method <b>silently fails</b></p>
-     *
      * @param id Person to delete
      */
     void removePerson(Long id);
 
     /**
      * Fetches all non-hidden persons
-     *
      * @return List of all non-hidden persons
      */
     List<PersonDTO> getAll();
 
     /**
      * Get all purchases
-     *
      * @param identificationNumber search purchases by specific identification number
      * @return List of all purchases by specific person
      */
@@ -58,7 +52,6 @@ public interface PersonService {
 
     /**
      * Get all sales
-     *
      * @param identificationNumber search sales by specific identification number
      * @return List of all sales by specific person
      */

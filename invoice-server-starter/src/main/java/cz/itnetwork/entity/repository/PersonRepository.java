@@ -29,14 +29,9 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface PersonRepository extends JpaRepository<PersonEntity, Long> {
-    /**
-     * Method to find hidden person
-     */
+
     List<PersonEntity> findByHidden(boolean hidden);
 
-    /**
-     * Individual statistic
-     */
     @Query(value = """
             SELECT new cz.itnetwork.dto.PersonStatisticDTO
             (person.id AS personId, person.name AS personName, SUM(i.price) AS revenue)

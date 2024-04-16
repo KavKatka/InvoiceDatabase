@@ -38,24 +38,16 @@ import java.util.stream.Collectors;
 
 @Service
 public class PersonServiceImpl implements PersonService {
-    /**
-     * DI person mapper
-     */
+
     @Autowired
     private PersonMapper personMapper;
-    /**
-     * DI person repository
-     */
+
     @Autowired
     private PersonRepository personRepository;
-    /**
-     * DI invoice mapper
-     */
+
     @Autowired
     private InvoiceMapper invoiceMapper;
-    /**
-     * DI invoice repository
-     */
+
     @Autowired
     private InvoiceRepository invoiceRepository;
 
@@ -68,9 +60,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public PersonDTO editPerson(PersonDTO personDTO, Long id) {
-
         PersonEntity person = fetchPersonById(id);
-
         person.setHidden(true);
         personRepository.save(person);
 
@@ -83,12 +73,10 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public PersonDTO getDetail(Long id) {
-
         PersonEntity person = fetchPersonById(id);
 
         return personMapper.toDTO(person);
     }
-
 
     @Override
     public List<InvoiceDTO> getSales(String identificationNumber) {
@@ -112,6 +100,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public List<PersonDTO> getAll() {
+
         return personRepository.findByHidden(false)
                 .stream()
                 .map(i -> personMapper.toDTO(i))
@@ -120,6 +109,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public List<PersonStatisticDTO> getIndividualStatistic() {
+
         return personRepository.getIndividualStatistic();
     }
 

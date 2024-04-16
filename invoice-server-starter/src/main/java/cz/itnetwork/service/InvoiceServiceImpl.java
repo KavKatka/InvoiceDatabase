@@ -20,24 +20,16 @@ import java.util.stream.Collectors;
 
 @Service
 public class InvoiceServiceImpl implements InvoiceService {
-    /**
-     * DI invoice mapper
-     */
+
     @Autowired
     private InvoiceMapper invoiceMapper;
-    /**
-     * DI invoice repository
-     */
+
     @Autowired
     private InvoiceRepository invoiceRepository;
-    /**
-     * DI person mapper
-     */
+
     @Autowired
     private PersonMapper personMapper;
-    /**
-     * DI person repository
-     */
+
     @Autowired
     private PersonRepository personRepository;
 
@@ -48,7 +40,6 @@ public class InvoiceServiceImpl implements InvoiceService {
         PersonEntity buyer = fetchPersonById(invoiceDTO.getBuyer().getId());
         invoice.setSeller(seller);
         invoice.setBuyer(buyer);
-
         invoiceRepository.save(invoice);
 
         return invoiceMapper.toDTO(invoice);
@@ -91,12 +82,12 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     @Override
     public InvoiceStatisticDTO getGeneralStatistic() {
+
         return invoiceRepository.getGeneralStatistic();
     }
 
     /**
      * Find invoice by id
-     *
      * @param id search by id
      * @return invoice by id or throw NotFoundException
      */
@@ -107,7 +98,6 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     /**
      * Find person by id
-     *
      * @param id search by id
      * @return person by id or throw NotFoundException
      */

@@ -11,7 +11,6 @@ const InvoiceDetail = () => {
         apiGet("/api/invoices/" + id).then((data) => setInvoice(data));
     }, []);
 
-   
     return (
         <>
             <div>

@@ -21,7 +21,6 @@ public class InvoiceController {
     @Autowired
     private PersonService personService;
 
-
     @PostMapping("/invoices")
     public InvoiceDTO addInvoice(@RequestBody InvoiceDTO invoiceDTO) {
         return invoiceService.addInvoice(invoiceDTO);
@@ -48,7 +47,7 @@ public class InvoiceController {
     }
 
     @PutMapping("/invoices/{id}")
-    public InvoiceDTO editInvoice(@RequestBody InvoiceDTO invoiceDTO, @PathVariable long id) {
+    public InvoiceDTO editInvoice(@RequestBody InvoiceDTO invoiceDTO, @PathVariable Long id) {
         return invoiceService.editInvoice(invoiceDTO, id);
     }
 
@@ -62,6 +61,4 @@ public class InvoiceController {
     public InvoiceStatisticDTO getGeneralStatistic() {
         return invoiceService.getGeneralStatistic();
     }
-
-
 }

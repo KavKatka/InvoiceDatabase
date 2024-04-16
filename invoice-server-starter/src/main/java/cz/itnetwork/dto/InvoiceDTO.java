@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 /**
- * Information to invoice
+ * Information for invoice
  */
 @Data
 @AllArgsConstructor

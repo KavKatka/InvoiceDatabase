@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { apiGet } from "../utils/api";
 
-
-
 export function GeneralStatistic(){
 
     const [statisticsState, setStatistics] = useState([]);

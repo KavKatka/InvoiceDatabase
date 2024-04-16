@@ -87,7 +87,6 @@ export function App() {
             <Route path="statistics" element={<GeneralStatistic/>}></Route>
           </Route>
         </Routes>
-        
         </div>
     </Router>
   );

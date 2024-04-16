@@ -82,7 +82,6 @@ const PersonDetail = () => {
                         {person.note}
                     </p>
                 </div>
-                
                 <div className="col-6">
                     <br/>
                     <InvoiceTable

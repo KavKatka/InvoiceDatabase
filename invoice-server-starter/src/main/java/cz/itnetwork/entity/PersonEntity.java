@@ -36,88 +36,54 @@ import java.util.List;
 @Getter
 @Setter
 public class PersonEntity {
-    /**
-     * Generated id
-     */
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    /**
-     * Full name
-     */
+
     @Column(nullable = false)
     private String name;
-    /**
-     * Identification number
-     */
+
     @Column(nullable = false)
     private String identificationNumber;
-    /**
-     * Tax number
-     */
+
     private String taxNumber;
-    /**
-     * Account number
-     */
+
     @Column(nullable = false)
     private String accountNumber;
-    /**
-     * Bank code
-     */
+
     @Column(nullable = false)
     private String bankCode;
-    /**
-     * IBAN
-     */
+
     private String iban;
-    /**
-     * Telephone
-     */
+
     @Column(nullable = false)
     private String telephone;
-    /**
-     * Mail
-     */
+
     @Column(nullable = false)
     @Email(message = "Wrong email address.")
     private String mail;
-    /**
-     * Street
-     */
+
     @Column(nullable = false)
     private String street;
-    /**
-     * Post code
-     */
+
     @Column(nullable = false)
     private String zip;
-    /**
-     * City
-     */
+
     @Column(nullable = false)
     private String city;
-    /**
-     * Country - specification in enum
-     **/
+
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Countries country;
-    /**
-     * Note
-     */
+
     private String note;
-    /**
-     * Set hidden on editing person - original information are saved
-     */
+
     private boolean hidden = false;
-    /**
-     * Purchases
-     */
+
     @OneToMany(mappedBy = "buyer")
     private List<InvoiceEntity> purchases;
-    /**
-     * Sales
-     */
+
     @OneToMany(mappedBy = "seller")
     private List<InvoiceEntity> sales;
 }
